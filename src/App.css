@@ -22,6 +22,9 @@
   border: none;
   background-color: #C8ECB8;
   height: 34px;
+  color: #0A4610;
+  font-weight: bolder;
+  border-radius: 10px;
   /* Remove these styles unless necessary */
   /* display: flex;
   justify-content: center; */
@@ -41,3 +44,64 @@
 /* Forgot Password Styles */
 
 /* Borrow Form Styles */
+
+.borrowFormPageContainer {
+  position: absolute;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 50px;
+  justify-content: center;
+}
+
+.borrowFormHeader {
+  flex: 1;
+  padding: 5px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.arrowContainer {
+  margin-right: auto;
+}
+
+.smallLogoContainer {
+  margin-left: auto;
+}
+
+.formFirstContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+  padding: 40px 19px 10px;
+  margin-bottom: 30px;
+}
+
+/* Full width for firstFormContainer */
+.firstFormContainer {
+  width: 85%;
+  background-color: #CEE7C5;
+  border-radius: 8px;
+  padding: 20px; /* Adjust as needed */
+}
+
+.equipmentSearchContainer {
+  width: 90%;
+  background-color: #CEE7C5; /* Example background color */
+  padding: 10px; /* Adjust as needed */
+  border-radius: 8px;
+  margin: 10px 0; /* Add margin as needed */
+}
+
+/* Additional styling for images */
+img.smallLogo {
+  max-width: 100%;
+  height: auto;
+}
+
+img.arrow {
+  max-width: 100%;
+  height: auto;
+}
