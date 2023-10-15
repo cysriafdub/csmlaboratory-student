@@ -46,7 +46,7 @@
 
 
 
-/* dashboard style*/
+/* DASHBOARD STYLE*/
 .logocontainerD{
   margin: 40px 10px 10px 10px;
  
@@ -242,6 +242,15 @@ D-3C */
   margin-bottom: 8px;
 
 }
+.transactionContainerBreakage{
+  background-color: #FFE9E9;
+  border-radius: 7px;
+ 
+  display: flex;
+  padding: 10px 10px 0px 10px;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
 .transFirstRow{
   display: flex;
   flex-direction: row;
@@ -276,8 +285,8 @@ D-3C */
  
   display: flex;
   align-items: center;
-  height: 4px;
-  width: 4px;
+  height: 5px;
+  width: 5px;
   margin-right: 15px;
   
 }
@@ -342,7 +351,19 @@ D-3C */
   font-style: normal;
   font-weight: 700;
 }
-
+.obReturn{
+  background-color: #FFECA7;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
+  display: flex;
+  padding: 5px 20px;
+  justify-content: center;
+  align-items: center;
+  color: #4D1A1A;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+}
 .transThirdRow {
     margin-top: 5px;
     border-top: 1px solid rgba(160, 160, 160, 0.20);
@@ -359,5 +380,7 @@ D-3C */
   
   
 }
+
+/* PENDING VIEW STYLE*/
 
 
