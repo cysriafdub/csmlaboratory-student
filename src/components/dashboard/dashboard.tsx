@@ -16,6 +16,18 @@ function DashboardScreen() {
     const handleButtonClick = (item: string) => {
         setSelectedItem(item);
       };
+
+      const pendingItems = [
+        {
+          id: 1034,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Pending'
+        }
+        
+       
+      ]
+    
     
     
     
@@ -30,6 +42,7 @@ return (
             <div className="leftlabel">
                 <div className="iconContainer">
                     <AccountCircleIcon/>
+                    
                 </div>
                 <div className="leftlabelstudent">
                 <div className="idNumber">
@@ -110,47 +123,42 @@ return (
         {/* transaction containers */}
         <div className="transactionView">
         {selectedItem === 'pending' && (
-            <div className="transactionContainer">
+            pendingItems.map((item) => (
+                <div className="transactionContainer">
                 <div className="transFirstRow">
                     <div className="transactionID">
-                            Transaction ID #1002
+                     Transaction ID #{item.id}
                     </div>
                     <div className="currentStatus">
-                            <div className="iconCurrentStatus">
-                                <CircleIcon/>
-                            
-                           </div>
-                           <div className='penStatus'> Checking </div>
+                    <div className="iconCurrentStatus">
+                        <CircleIcon />
                     </div>
-
+                    <div className='penStatus'>   {item.status} </div>
+                    </div>
                 </div>
-
-
                 <div className="transSecondRow">
-                        <div className="timeanddate">
-                        <div>August 19.2021</div> 
-                        <div>9:35 am</div>
-                        </div>
-
-                        <div className="pendingCancel">
-                            Cancel
-                        </div>
-
-                        
+                    <div className="timeanddate">
+                    <div> {item.date}</div>
+                    <div>{item.time}</div>
+                    </div>
+                    <div className="pendingCancel">
+                    Cancel
+                    </div>
                 </div>
-                    
                 <div className="transThirdRow">
                     Tap to View
                 </div>
-            </div>
+                </div>
+            ))
             )}
+
         
 
         {selectedItem === 'on-borrow' && (
             <div className="transactionContainer">
                 <div className="transFirstRow">
                     <div className="transactionID">
-                            TRANSACTION ID #1002
+                             Transaction ID #1002
                     </div>
                     <div className="currentStatus">
                             <div className="iconCurrentStatus">
@@ -165,8 +173,16 @@ return (
 
 
                 <div className="transSecondRow">
+                        <div className="timeanddate">
                         <div>August 19.2021</div> 
                         <div>9:35 am</div>
+                        </div>
+
+                        <div className="obReturn">
+                            Return
+                        </div>
+
+                        
                 </div>
                     
                 <div className="transThirdRow">
@@ -179,7 +195,7 @@ return (
             <div className="transactionContainer">
                 <div className="transFirstRow">
                     <div className="transactionID">
-                            TRANSACTION ID #1002
+                             Transaction ID #1002
                     </div>
                     <div className="currentStatus">
                             <div className="iconCurrentStatus">
@@ -194,8 +210,14 @@ return (
 
 
                 <div className="transSecondRow">
+                        <div className="timeanddate">
                         <div>August 19.2021</div> 
                         <div>9:35 am</div>
+                        </div>
+
+                       
+
+                        
                 </div>
                     
                 <div className="transThirdRow">
@@ -204,10 +226,10 @@ return (
             </div>
             )}
         {selectedItem === 'breakage' && (
-            <div className="transactionContainer">
+            <div className="transactionContainerBreakage">
                 <div className="transFirstRow">
                     <div className="transactionID">
-                            TRANSACTION ID #1002
+                    Transaction ID #1002
                     </div>
                     <div className="currentStatus">
                             <div className="iconCurrentStatus">
@@ -222,8 +244,11 @@ return (
 
 
                 <div className="transSecondRow">
+                        <div className="timeanddate">
                         <div>August 19.2021</div> 
                         <div>9:35 am</div>
+                        </div>
+                        
                 </div>
                     
                 <div className="transThirdRow">
