@@ -1,13 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/login/Login';
-import BorrowForm from './components/borrowForm/BorrowForm';
+import BorrowingForm from './components/borrowForm/BorrowingForm';
 
 function App() {
   return (
     <div className="App">
-      <BorrowForm />
+      <BorrowingForm />
     </div>
   );
 }

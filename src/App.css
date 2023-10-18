@@ -38,13 +38,46 @@
   color: black;
 }
 
+.labelButtonContainer{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.removeButton{
+  margin-right: 60px;
+  background-color: transparent;
+  border: none;
+}
+
+.removeButtonIcon{
+  color: red;
+}
+
+.addButtonContainer{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.addBButton{
+  background-color: #5CBD10;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  padding-bottom: 4px;
+  color: white;
+
+}
 
 /* End Login Page Styles */
 
 /* Forgot Password Styles */
 
 /* Borrow Form Styles */
-
+/* 
 .borrowFormPageContainer {
   position: absolute;
   width: 100%;
@@ -77,26 +110,26 @@
   padding-top: 40px;
   padding: 40px 19px 10px;
   margin-bottom: 30px;
-}
+} */
 
 /* Full width for firstFormContainer */
-.firstFormContainer {
+/* .firstFormContainer {
   width: 85%;
   background-color: #CEE7C5;
   border-radius: 8px;
-  padding: 20px; /* Adjust as needed */
-}
-
+  padding: 20px; 
+} */
+/* 
 .equipmentSearchContainer {
   width: 90%;
-  background-color: #CEE7C5; /* Example background color */
-  padding: 10px; /* Adjust as needed */
+  background-color: #CEE7C5;
+  padding: 10px;
   border-radius: 8px;
-  margin: 10px 0; /* Add margin as needed */
-}
+  margin: 10px 0; 
+} */
 
 /* Additional styling for images */
-img.smallLogo {
+/* img.smallLogo {
   max-width: 100%;
   height: auto;
 }
@@ -104,4 +137,65 @@ img.smallLogo {
 img.arrow {
   max-width: 100%;
   height: auto;
+} */
+
+/* New Borrow Form Experiment */
+
+.pageBody{
+
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  
+}
+
+.arrowButton{
+  background-color: transparent;
+  border: none;
+}
+
+.headerContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin: 20px;
+}
+
+.allFormContainer{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: auto;
+}
+
+.firstFormContainer{
+  background-color: #CEE7C5;
+  height: 160px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.qrButton{
+  background-color: transparent;
+  border: none;
+}
+
+label{
+  margin-left: 20px;
+}
+
+.inputField{
+  background-color: white;
+  margin-left: 20px;
+  width: 85%;
+}
+
+
+@media screen and (max-width: 900px){
+  .allFormContainer{
+    width: 100%;
+  }
 }
