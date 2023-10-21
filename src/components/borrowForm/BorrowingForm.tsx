@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { QrReader, QrReaderProps } from 'react-qr-reader';
+import { useState, Component } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import HeaderLogo from "../../assets/headerlogo.png";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -8,6 +9,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
+type ExtendedQrReaderProps = QrReaderProps & {
+  style: React.CSSProperties;
+};
+
 function BorrowingForm() {
   const tempdatahead = ["Item No.", "Description", "Qty", "Action"];
   const tempdata = [
@@ -16,6 +21,8 @@ function BorrowingForm() {
     ["003", "Glass", "4", "Delete"],
     ["004", "Bowl", "2", "Delete"],
   ];
+
+  const [data, setData] = useState('No result');
 
   const [borrowers, setBorrowers] = useState([{ id: 1, studentId: "" }]);
 
@@ -34,6 +41,7 @@ function BorrowingForm() {
       setBorrowers(updatedBorrowers);
     }
   };
+
 
   return (
     <div className="pageBody">
@@ -179,6 +187,9 @@ function BorrowingForm() {
             </div>
           </form>
         </div>
+      </div>
+      <div style={{ width: '100%' }}>
+
       </div>
     </div>
   );

@@ -77,69 +77,6 @@
 /* Forgot Password Styles */
 
 /* Borrow Form Styles */
-/* 
-.borrowFormPageContainer {
-  position: absolute;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: 50px;
-  justify-content: center;
-}
-
-.borrowFormHeader {
-  flex: 1;
-  padding: 5px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-}
-
-.arrowContainer {
-  margin-right: auto;
-}
-
-.smallLogoContainer {
-  margin-left: auto;
-}
-
-.formFirstContainer {
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  padding: 40px 19px 10px;
-  margin-bottom: 30px;
-} */
-
-/* Full width for firstFormContainer */
-/* .firstFormContainer {
-  width: 85%;
-  background-color: #CEE7C5;
-  border-radius: 8px;
-  padding: 20px; 
-} */
-/* 
-.equipmentSearchContainer {
-  width: 90%;
-  background-color: #CEE7C5;
-  padding: 10px;
-  border-radius: 8px;
-  margin: 10px 0; 
-} */
-
-/* Additional styling for images */
-/* img.smallLogo {
-  max-width: 100%;
-  height: auto;
-}
-
-img.arrow {
-  max-width: 100%;
-  height: auto;
-} */
-
-/* New Borrow Form Experiment */
 
 .pageBody{
 
@@ -198,4 +135,46 @@ label{
   .allFormContainer{
     width: 100%;
   }
+}
+
+/* End of Borrowing Form Styles */
+
+/* Forgot Password Styles */
+
+.forgotPassPageContainer{
+  margin: 20px;
+}
+
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  text-align: left; /* Align the content inside 'content' to the left */
+}
+
+.hText{
+  color: #1E1A4D;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+label{
+  text-align: left !important;
+}
+
+
+.requestButton{
+  width: 309px;
+  height: 41px;
+  border: none;
+  border-radius: 5px;
+  background-color: #77C777;
+  color: #0A4610;
+  font-weight: bolder;
 }
