@@ -4,9 +4,9 @@ import header from '../../assets/headerlogo.png'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useState } from 'react';
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
-import CheckIcon from '@mui/icons-material/Check'; 
-function PendingView() {
+function ReturnCompletedView() {
     
    
         const pendingItems = [
@@ -14,7 +14,7 @@ function PendingView() {
               id: 1034,
               date: 'August 19, 2023',
               time: '9:00am',
-              status: 'Pending',
+              status: 'On-borrow',
               items: 
                 [
                     {name: 'Petri Dishes', quantity: 3, breakage: 1},
@@ -67,32 +67,11 @@ return (
            <img src={header} alt="Header Logo" className="mainlogoView" />
         </div>
 
-        <div className="pendingHeaderText">
-                Lab technician is<br />
-                reviewing and checking for availability<br />
-                of items<br />
-               
-           </div>
 
-        <div className="pendingBar">
-            <div className="checkMarkPoint">
-                <CheckIcon/>
-            </div>
-        
-           
-            <div className="lineIcon"></div>
-            <div className="checkMark"/>
-            <div className="dashIcon"></div>
-            <div className="checkMark"/>
-        </div>
-        <div className="pendingBarLabel">
-           <div className='barLabel'> Requested</div> 
-           <div className='barLabel'> Checking </div>
-           <div className='barLabel'> Releasing </div>
-        </div>
+      
         {pendingItems.map((item) => (
             <div className="papercontentStatus">
-                <div className="viewStatusPending">
+                <div className="viewStatusOnBorrow">
                     Status:<span>{item.status} </span>
 
                 </div>
@@ -176,18 +155,28 @@ return (
                     </div>
             
                 </div>
+
+                <div className="viewConfirmation">
+                    <div className="firstRowConfirm">
+                        <div className="checkIconButton">
+                            <CircleOutlinedIcon  className='customeCircle' sx={{ stroke: "white", strokeWidth: 1 }}/>
+                        </div>
+                        <div className="confirmationTxt">
+                            I certify that the above item(s) wil be returned in good condition.
+                        </div>
+
+                    </div>
+
+                    <div className="returnViewButton">
+                        Return
+                    </div>
+                </div>
             </div>
             ))}
 
-        <div className="doneViewButton">
-            Done View
-        </div>
-        <div className="cancelViewButton">
-            Cancel Request
-        </div>
-
+      
     </div>
     );
 }
 
-export default PendingView;
+export default ReturnCompletedView;

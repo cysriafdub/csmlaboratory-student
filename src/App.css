@@ -383,7 +383,7 @@ D-3C */
 
 /* PENDING VIEW STYLE*/
 
-.pendingContent{
+.viewContent{
   background-color:rgba(234, 234, 234, 0.427);
   max-height: 700px;
   overflow-y: auto;
@@ -504,6 +504,30 @@ D-3C */
   font-weight: 400;
   margin: 20px 25px 0px 25px;
  
+}
+.viewStatusOnBorrow{
+  display: flex;
+  padding: 5px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  color: #00360C;
+  text-align: center;
+ 
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 20px 25px 0px 25px;
+  background: #D9FFD8;
+}
+.viewStatusOnBorrow span{
+  color: #00360C;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  
 }
 .viewStatusPending span{
   color: #D9A92E;
@@ -668,5 +692,46 @@ D-3C */
   font-style: normal;
   font-weight: 700;
   margin: 0px 15px 0px 15px;
+
+}
+
+
+/* on borrow confirmation */
+
+.viewConfirmation{
+  background-color: white;
+  margin: 0px 25px 0px 25px
+}
+.confirmationTxt{
+  background-color: pink;
+  color: #000;
+  text-align: justify;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.customCircle{
+  color: #000000B2;
+
+}
+.firstRowConfirm{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.returnViewButton{
+  display: flex;
+  height: 43px;
+  padding: 9px 38px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 10px;
+  background: rgba(154, 154, 154, 0.40);
+  margin-top: 10px;
+
+
 
 }
