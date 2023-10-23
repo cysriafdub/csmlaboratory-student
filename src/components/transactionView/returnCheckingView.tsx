@@ -1,4 +1,5 @@
 
+
 import header from '../../assets/headerlogo.png'
 
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -7,15 +8,15 @@ import { useState } from 'react';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
 import CheckIcon from '@mui/icons-material/Check'; 
-function ReturnCompletedView() {
+function ReturnCheckingView() {
     
    
-        const returnCompleteItems = [
+        const returnCheckingItems = [
             {
               id: 1034,
               date: 'August 19, 2023',
               time: '9:00am',
-              status: 'Completed',
+              status: 'Return',
               items: 
                 [
                     {name: 'Petri Dishes', quantity: 3, breakage: 1},
@@ -67,9 +68,10 @@ function ReturnCompletedView() {
                        <img src={header} alt="Header Logo" className="mainlogoView" />
                     </div>
             
-                    <div className="returnCompleteHeaderText">
-                            Transaction Complete
-                           
+                    <div className="returnCheckingHeaderText">
+                            Proceed to Lab technician <br />
+                            and turn-in the equipment.
+                                                
                        </div>
             
                   
@@ -79,13 +81,9 @@ function ReturnCompletedView() {
                             <CheckIcon/>
                         </div>
                         <div className="lineIcon"></div>
-                        <div className="checkMarkPoint">
-                            <CheckIcon/>
-                        </div>
-                        <div className="lineIcon"></div>
-                        <div className="checkMarkPoint">
-                            <CheckIcon/>
-                        </div>                        
+                        <div className="checkMark"/>
+                        <div className="dashIcon"></div>
+                        <div className="checkMark"/>                
                       
                     </div>
                     <div className="returnBarTxt">
@@ -94,11 +92,11 @@ function ReturnCompletedView() {
                        <div className='barLabel'> Complete </div>
                     </div>
                 
-                    {returnCompleteItems.map((item) => (
+                    {returnCheckingItems.map((item) => (
                         <div className="papercontentStatus">
-                            <div className="viewStatusReturnComplete">
-                                Status:<span>{item.status} </span>
-            
+                            <div className="viewStatusReturnChecking">
+                                Status:<span>{item.status} - turn-in the equipment and have it check </span>
+                               
                             </div>
             
             
@@ -183,13 +181,10 @@ function ReturnCompletedView() {
                         </div>
                         ))}
             
-                    <div className="doneViewButton">
-                        Done View
-                    </div>
-                   
+                 
             
                 </div>
                 );
             }
 
-export default ReturnCompletedView;
+export default ReturnCheckingView;
