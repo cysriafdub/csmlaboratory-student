@@ -130,12 +130,31 @@ label{
   width: 85%;
 }
 
+.quantityInput{
+  width: 20px;
+}
+
 
 @media screen and (max-width: 900px){
   .allFormContainer{
     width: 100%;
   }
 }
+
+/* Modal Styles */
+.modal{
+  background-color: gray;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.qrStyle{
+  height: auto;
+  width: 100%;
+}
+/* End of Modal Styles */
 
 /* End of Borrowing Form Styles */
 
