@@ -6,12 +6,15 @@ import DashboardScreen from './components/dashboard/dashboard';
 import PendingView from './components/transactionView/pendingView';
 import OnBorrowView from './components/transactionView/onBorrowView';
 import ReturnCompletedView from './components/transactionView/returnCompletedView';
+import ReturnCheckingView from './components/transactionView/returnCheckingView';
+import BreakageView from './components/transactionView/breakageView';
+import BreakageCompletedView from './components/transactionView/breakageCompletedView';
 
 
 function App() {
   return (
     <div className="App">
-      <ReturnCompletedView/>
+      <BreakageCompletedView/>
     </div>
   );
 }

@@ -4,9 +4,10 @@ import header from '../../assets/headerlogo.png'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useState } from 'react';
-
+import CircleIcon from '@mui/icons-material/Circle';
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CheckIcon from '@mui/icons-material/Check'; 
-function PendingView() {
+function BreakageCompletedView() {
     
    
         const pendingItems = [
@@ -14,10 +15,10 @@ function PendingView() {
               id: 1034,
               date: 'August 19, 2023',
               time: '9:00am',
-              status: 'Pending',
+              status: 'Completed',
               items: 
                 [
-                    {name: 'Petri Dishes', quantity: 3, breakage: 1},
+                    {name: 'Petri Dishes', quantity: 3, breakage: 1, status: 'Replaced'},
                      {name: 'Graduated Cylinder', quantity: 6,  breakage: 3},
                      {name: 'Volumetric Flask', quantity: 2,  breakage: 1},
                    
@@ -67,32 +68,35 @@ return (
            <img src={header} alt="Header Logo" className="mainlogoView" />
         </div>
 
-        <div className="pendingHeaderText">
-                Lab technician is<br />
-                reviewing and checking for availability<br />
-                of items<br />
-               
-           </div>
-
-        <div className="pendingBar">
-            <div className="checkMarkPoint">
-                <CheckIcon/>
-            </div>
-        
-           
-            <div className="lineIcon"></div>
-            <div className="checkMark"/>
-            <div className="dashIcon"></div>
-            <div className="checkMark"/>
-        </div>
-        <div className="pendingBarTxt">
-           <div className='barLabel'> Requested</div> 
-           <div className='barLabel'> Checking </div>
-           <div className='barLabel'> Releasing </div>
-        </div>
+                     <div className="returnCompleteHeaderText">
+                            Transaction Complete
+                           
+                       </div>
+            
+                  
+                    <div className="returnCompletedBar">
+             
+                        <div className="checkMarkPoint">
+                            <CheckIcon/>
+                        </div>
+                        <div className="lineIcon"></div>
+                        <div className="checkMarkPoint">
+                            <CheckIcon/>
+                        </div>
+                        <div className="lineIcon"></div>
+                        <div className="checkMarkPoint">
+                            <CheckIcon/>
+                        </div>                        
+                      
+                    </div>
+                    <div className="returnBarTxt">
+                       <div className='barLabel'> Submitted</div> 
+                       <div className='barLabel'> Checking </div>
+                       <div className='barLabel'> Complete </div>
+                    </div>
         {pendingItems.map((item) => (
             <div className="papercontentStatus">
-                <div className="viewStatusPending">
+                <div className="viewStatusReturnComplete">
                     Status:<span>{item.status} </span>
 
                 </div>
@@ -121,21 +125,40 @@ return (
 
 
                     <div className='viewTitleLabel'> Selected Items </div>
-                    <div className='viewItemsSelected'>
+                     <div className='viewItemsSelected'>
                         {item.items.map((selectedItems,index)=>(
 
                         
                         
-                                <div className='viewEachInfo' key ={index}>
-                                    <div className='eachIndex'>
-                                        {index +1}
+                                <div className='viewEachBreakage' key ={index}>
+                                    <div className="viewItemLeft">
+                                        <div className='eachIndex'>
+                                            {index +1}
+                                        </div>
+                                        <div className='eachItemDetails'>
+                                            {selectedItems.name}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;
+                                        {selectedItems.quantity}
+                                        </div>
                                     </div>
-                                    <div className='eachItemDetails'>
-                                        {selectedItems.name}
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;
-                                    {selectedItems.quantity}
-                                    </div>
-                                </div>      
+
+                                    <div className="viewBreakageCompleteRight">
+                                        {selectedItems.status === 'Replaced' && (
+                                        <div className="breakageContainer">
+                                        <div className='breakageCompleteDetails'>
+                                            <div className='breakageReplacedLabel'> Replaced </div>
+                                            <div className='iconBreakageReplacedView'>
+                                                <CircleIcon/>
+                                                {selectedItems.breakage}
+                                                </div>
+                                            
+                                        </div>
+                                        </div>
+                                        )}
+                                    </div>   
+                                </div>    
+                                
+                                   
                             ))}   
                     </div>
 
@@ -179,15 +202,12 @@ return (
             </div>
             ))}
 
-        <div className="doneViewButton">
+               <div className="doneViewButton">
             Done View
-        </div>
-        <div className="cancelViewButton">
-            Cancel Request
         </div>
 
     </div>
     );
 }
 
-export default PendingView;
+export default BreakageCompletedView;

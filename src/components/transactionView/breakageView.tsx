@@ -4,9 +4,10 @@ import header from '../../assets/headerlogo.png'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useState } from 'react';
-
+import CircleIcon from '@mui/icons-material/Circle';
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CheckIcon from '@mui/icons-material/Check'; 
-function PendingView() {
+function BreakageView() {
     
    
         const pendingItems = [
@@ -14,10 +15,10 @@ function PendingView() {
               id: 1034,
               date: 'August 19, 2023',
               time: '9:00am',
-              status: 'Pending',
+              status: 'Breakage',
               items: 
                 [
-                    {name: 'Petri Dishes', quantity: 3, breakage: 1},
+                    {name: 'Petri Dishes', quantity: 3, breakage: 1, status: 'Breakage'},
                      {name: 'Graduated Cylinder', quantity: 6,  breakage: 3},
                      {name: 'Volumetric Flask', quantity: 2,  breakage: 1},
                    
@@ -67,32 +68,10 @@ return (
            <img src={header} alt="Header Logo" className="mainlogoView" />
         </div>
 
-        <div className="pendingHeaderText">
-                Lab technician is<br />
-                reviewing and checking for availability<br />
-                of items<br />
-               
-           </div>
-
-        <div className="pendingBar">
-            <div className="checkMarkPoint">
-                <CheckIcon/>
-            </div>
-        
-           
-            <div className="lineIcon"></div>
-            <div className="checkMark"/>
-            <div className="dashIcon"></div>
-            <div className="checkMark"/>
-        </div>
-        <div className="pendingBarTxt">
-           <div className='barLabel'> Requested</div> 
-           <div className='barLabel'> Checking </div>
-           <div className='barLabel'> Releasing </div>
-        </div>
+       
         {pendingItems.map((item) => (
             <div className="papercontentStatus">
-                <div className="viewStatusPending">
+                <div className="viewStatusBreakage">
                     Status:<span>{item.status} </span>
 
                 </div>
@@ -121,21 +100,43 @@ return (
 
 
                     <div className='viewTitleLabel'> Selected Items </div>
-                    <div className='viewItemsSelected'>
+                     <div className='viewItemsSelected'>
                         {item.items.map((selectedItems,index)=>(
 
                         
                         
-                                <div className='viewEachInfo' key ={index}>
-                                    <div className='eachIndex'>
-                                        {index +1}
+                                <div className='viewEachBreakage' key ={index}>
+                                    <div className="viewItemLeft">
+                                        <div className='eachIndex'>
+                                            {index +1}
+                                        </div>
+                                        <div className='eachItemDetails'>
+                                            {selectedItems.name}
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;
+                                        {selectedItems.quantity}
+                                        </div>
                                     </div>
-                                    <div className='eachItemDetails'>
-                                        {selectedItems.name}
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;
-                                    {selectedItems.quantity}
-                                    </div>
-                                </div>      
+
+                                    <div className="viewBreakageRight">
+                                        {selectedItems.status === 'Breakage' && (
+                                        <div className="breakageContainer">
+                                        <div className='breakageDetails'>
+                                            <div className='breakageLabel'> Broken/Missing </div>
+                                            <div className='iconBreakageView'>
+                                            <CircleIcon/>
+                                            {selectedItems.breakage}
+                                            </div>
+                                            
+                                        </div>
+                                        <div className="breakageItemNote">
+                                        Note: Replace items mark as Broken/Missing
+                                        </div>
+                                        </div>
+                                        )}
+                                    </div>   
+                                </div>    
+                                
+                                   
                             ))}   
                     </div>
 
@@ -179,15 +180,25 @@ return (
             </div>
             ))}
 
-        <div className="doneViewButton">
-            Done View
-        </div>
-        <div className="cancelViewButton">
-            Cancel Request
-        </div>
+                <div className="viewConfirmation">
+                    <div className="firstRowConfirm">
+                        <div className="checkIconButton">
+                            <CircleOutlinedIcon  className='customeCircle' sx={{ stroke: "white", strokeWidth: 1 }}/>
+                        </div>
+                        <div className="confirmationTxt">
+                        I certify that the above item(s) will be replaced.<br/>
+                         Make sure the replacement item(s) are ready to submit before clicking comply.
+                        </div>
+
+                    </div>
+
+                    <div className="returnViewButton">
+                        Comply
+                    </div>
+                </div>
 
     </div>
     );
 }
 
-export default PendingView;
+export default BreakageView;
