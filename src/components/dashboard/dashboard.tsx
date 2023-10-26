@@ -1,16 +1,16 @@
 
 import header from '../../assets/headerlogo.png'
+
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
 import LogoutIcon from '@mui/icons-material/Logout';
-
 import HourglassBottomTwoToneIcon from '@mui/icons-material/HourglassBottomTwoTone';import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import BrokenImageOutlinedIcon from '@mui/icons-material/BrokenImageOutlined';
-
 import CircleIcon from '@mui/icons-material/Circle';
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 function DashboardScreen() {
     const [selectedItem, setSelectedItem] = useState('pending');
     const handleButtonClick = (item: string) => {
@@ -23,6 +23,36 @@ function DashboardScreen() {
           date: 'August 19, 2023',
           time: '9:00am',
           status: 'Pending'
+        }
+        
+       
+      ]
+      const onBorrowItems = [
+        {
+          id: 1034,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Borrowing'
+        }
+        
+       
+      ]
+      const returnItems = [
+        {
+          id: 1034,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Completed'
+        }
+        
+       
+      ]
+      const breakageItems = [
+        {
+          id: 1034,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Breakage'
         }
         
        
@@ -73,7 +103,7 @@ return (
         {/* 4 buttons */}
 
         <div className="buttonsView">
-            <button 
+            <Link to='/pending'
                 className={`buttonItemsStatus ${selectedItem === 'pending' ? 'button-active' : ''}`}
                 onClick={() => handleButtonClick('pending')}
                 
@@ -83,9 +113,9 @@ return (
                 <HourglassBottomTwoToneIcon />
                 </div>
                 <div className="buttonName">Pending</div>
-            </button>
+            </Link>
 
-            <button 
+            <Link to ='/on-borrow'
                 className={`buttonItemsStatus ${selectedItem === 'on-borrow' ? 'button-active' : ''}`}
                 
                 onClick={() => handleButtonClick('on-borrow')}
@@ -94,9 +124,9 @@ return (
                 <BackHandOutlinedIcon />
                 </div>
                 <div className="buttonName">On-Borrow</div>
-            </button>
+            </Link>
 
-            <button 
+            <Link to='/return'
                 className={`buttonItemsStatus ${selectedItem === 'return' ? 'button-active' : ''}`}
                 
                 onClick={() => handleButtonClick('return')}
@@ -105,9 +135,9 @@ return (
                 <ThumbUpOutlinedIcon />
                 </div>
                 <div className="buttonName">Return</div>
-            </button>
+            </Link>
 
-            <button 
+            <Link to ='/breakage'
                 className={`buttonItemsStatus ${selectedItem === 'breakage' ? 'button-active' : ''}`}
                 
                 onClick={() => handleButtonClick('breakage')}
@@ -116,7 +146,7 @@ return (
                 <BrokenImageOutlinedIcon />
                 </div>
                 <div className="buttonName">Breakage</div>
-            </button>
+            </Link>
             </div>
 
 
@@ -124,7 +154,7 @@ return (
         <div className="transactionView">
         {selectedItem === 'pending' && (
             pendingItems.map((item) => (
-                <div className="transactionContainer">
+                <Link to ={`/pending/view/${item.id}`} className="transactionContainer">
                 <div className="transFirstRow">
                     <div className="transactionID">
                      Transaction ID #{item.id}
@@ -148,24 +178,25 @@ return (
                 <div className="transThirdRow">
                     Tap to View
                 </div>
-                </div>
+                </Link>
             ))
             )}
 
         
 
         {selectedItem === 'on-borrow' && (
-            <div className="transactionContainer">
+            onBorrowItems.map((item) => (
+            <Link to ={`/on-borrow/view/${item.id}`} className="transactionContainer">
                 <div className="transFirstRow">
                     <div className="transactionID">
-                             Transaction ID #1002
+                             Transaction ID #{item.id}
                     </div>
                     <div className="currentStatus">
                             <div className="iconCurrentStatus">
                             <CircleIcon className='obStatus'/>
                             
                            </div>
-                           <div className='obStatus'> Borrowing </div>
+                           <div className='obStatus'> {item.status} </div>
 
                     </div>
 
@@ -174,8 +205,8 @@ return (
 
                 <div className="transSecondRow">
                         <div className="timeanddate">
-                        <div>August 19.2021</div> 
-                        <div>9:35 am</div>
+                        <div>{item.date}</div> 
+                        <div>{item.time}</div>
                         </div>
 
                         <div className="obReturn">
@@ -188,21 +219,26 @@ return (
                 <div className="transThirdRow">
                     Tap to View
                 </div>
-            </div>
+            </Link>
+            
+            ))
             )}
         
         {selectedItem === 'return' && (
-            <div className="transactionContainer">
+          
+            returnItems.map((item) =>(
+
+                <Link to ={`/return/view/${item.id}`} className="transactionContainer">
                 <div className="transFirstRow">
                     <div className="transactionID">
-                             Transaction ID #1002
+                             Transaction ID #{item.id}
                     </div>
                     <div className="currentStatus">
                             <div className="iconCurrentStatus">
                             <CircleIcon className='retStatus'/>
                             
                            </div>
-                           <div className='retStatus'> Completed  </div>
+                           <div className='retStatus'> {item.status}  </div>
 
                     </div>
 
@@ -211,8 +247,8 @@ return (
 
                 <div className="transSecondRow">
                         <div className="timeanddate">
-                        <div>August 19.2021</div> 
-                        <div>9:35 am</div>
+                        <div>{item.date}</div> 
+                        <div>{item.time}</div>
                         </div>
 
                        
@@ -223,20 +259,23 @@ return (
                 <div className="transThirdRow">
                     Tap to View
                 </div>
-            </div>
+            </Link>
+            ))
             )}
+            
         {selectedItem === 'breakage' && (
-            <div className="transactionContainerBreakage">
+            breakageItems.map((item)=>(
+                <Link to ={`/breakage/view/${item.id}`} className="transactionContainerBreakage">
                 <div className="transFirstRow">
                     <div className="transactionID">
-                    Transaction ID #1002
+                    Transaction ID #{item.id}
                     </div>
                     <div className="currentStatus">
                             <div className="iconCurrentStatus">
                             <CircleIcon className='breakStatus'/>
                             
                            </div>
-                           <div className='breakStatus'> Breakage  </div>
+                           <div className='breakStatus'> {item.status}</div>
 
                     </div>
 
@@ -245,8 +284,8 @@ return (
 
                 <div className="transSecondRow">
                         <div className="timeanddate">
-                        <div>August 19.2021</div> 
-                        <div>9:35 am</div>
+                        <div>{item.date}</div> 
+                        <div>{item.time}</div>
                         </div>
                         
                 </div>
@@ -254,7 +293,8 @@ return (
                 <div className="transThirdRow">
                     Tap to View
                 </div>
-            </div>
+            </Link>
+            ))
             )}
 
             

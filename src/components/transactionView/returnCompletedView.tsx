@@ -5,7 +5,7 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useState } from 'react';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-
+import { Link } from 'react-router-dom';
 import CheckIcon from '@mui/icons-material/Check'; 
 function ReturnCompletedView() {
     
@@ -63,7 +63,9 @@ function ReturnCompletedView() {
                 <div className='viewContent'>
                   
                    <div className="headerView">
-                       <KeyboardBackspaceIcon className='viewArrowIcon'/>
+                   <Link to ="/return" className='customArrowLink'>
+                        <KeyboardBackspaceIcon className='viewArrowIcon'/>
+                    </Link>
                        <img src={header} alt="Header Logo" className="mainlogoView" />
                     </div>
             
@@ -183,9 +185,9 @@ function ReturnCompletedView() {
                         </div>
                         ))}
             
-                    <div className="doneViewButton">
+                    <Link to="/return" className="doneViewButton">
                         Done View
-                    </div>
+                    </Link>
                    
             
                 </div>
