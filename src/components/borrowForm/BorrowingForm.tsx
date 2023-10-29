@@ -4,11 +4,10 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import HeaderLogo from "../../assets/headerlogo.png";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
-import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-import QRScannerModal from './QRModal';
+
 
 interface Borrower {
   id: number;
@@ -158,24 +157,6 @@ function BorrowingForm() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
-  const qrCodeData = 'Your QR code data here'; // Replace with your QR code data
-
-  const QRopenModal = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsQRModalOpen(true);
-  };
-
-  const QRcloseModal = () => {
-    setIsQRModalOpen(false);
-  };
-
-  const [scannedResult, setScannedResult] = useState<string | null>(null);
-
-  const handleScan = (result: string | null) => {
-    setScannedResult(result);
-  };
-
   return (
     <div className="pageBody">
       {/* Header */}
@@ -211,7 +192,7 @@ function BorrowingForm() {
                   placeholder="Student ID"
                   endAdornment={
                     <InputAdornment position="end">
-                      <button className="qrButton" onClick={QRopenModal}>
+                      <button className="qrButton">
                       </button>
                     </InputAdornment>
                   }
@@ -368,7 +349,7 @@ function BorrowingForm() {
                       }}
                       endAdornment={
                         <InputAdornment position="end">
-                          <button className="qrButton" onClick={QRopenModal}>
+                          <button className="qrButton">
                           </button>
                         </InputAdornment>
                       }
