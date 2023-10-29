@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, MouseEvent } from 'react';
+import React, { useState, ChangeEvent, MouseEvent, useRef, useEffect } from 'react';
 import QuantityModal from './QuantityModal';
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import HeaderLogo from "../../assets/headerlogo.png";
@@ -55,18 +55,46 @@ function BorrowingForm() {
   const [selectedItem, setSelectedItem] = useState<[string, string, number, string] | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
   const [tableData, setTableData] = useState<TableItem[]>([]);
+  const [showSuggestionBox, setShowSuggestionBox] = useState(false);
+  const [isInputFocused, setInputFocused] = useState(false);
+
+  const handleInputFocus = () => {
+    setInputFocused(true);
+  };
+
+  const handleInputBlur = () => {
+    setTimeout(() => {
+      if (document.activeElement && !document.activeElement.classList.contains('suggestionItem')) {
+        // Hide the suggestion box when the input field loses focus
+        setShowSuggestionBox(false);
+      }
+    }, 100);
+  };
+  
+  
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const term: string = e.target.value;
     setSearchTerm(term);
-    const results = tempdata.filter(item => item[1].toLowerCase().includes(term.toLowerCase()));
-    setSearchResults(results);
+  
+    // Check if the search term is not empty and show the suggestion box
+    if (term.trim() !== '') {
+      setShowSuggestionBox(true);
+      const results = tempdata.filter(item => item[1].toLowerCase().includes(term.toLowerCase()));
+      setSearchResults(results);
+    } else {
+      // If the search term is empty, hide the suggestion box
+      setShowSuggestionBox(false);
+
+      setSearchResults([]); // You may want to clear the search results in this case
+    }
   };
 
   const handleSelectItem = (item: [string, string, number, string]) => {
     setSelectedItem(item);
     setQuantity(item[2]); // Set the initial quantity to the selected item's quantity
     setIsModalOpen(true);
+    
   };
 
   const handleAddToTable = (quantity: number) => {
@@ -179,12 +207,11 @@ function BorrowingForm() {
               <div>
                 <OutlinedInput
                   id="standard-adornment"
-                  className="inputField"
+                  className="firstfield"
                   placeholder="Student ID"
                   endAdornment={
                     <InputAdornment position="end">
                       <button className="qrButton" onClick={QRopenModal}>
-                        <QrCodeScannerIcon />
                       </button>
                     </InputAdornment>
                   }
@@ -194,7 +221,7 @@ function BorrowingForm() {
                 <label>Course</label>
               </div>
               <div>
-                <OutlinedInput className="inputField" placeholder="Course" />
+                <OutlinedInput className="firstfield" placeholder="Course" />
               </div>
             </div>
             <div className="secondFormContainer">
@@ -237,6 +264,7 @@ function BorrowingForm() {
                     placeholder="Search here to add below"
                     value={searchTerm}
                     onChange={handleSearch}
+                    onFocus={handleInputFocus} // Call this when the input is focused
                     endAdornment={
                       <InputAdornment position="end">
                         <SearchIcon />
@@ -245,14 +273,23 @@ function BorrowingForm() {
                   />
                 </div>
                 <div className="tableContainer">
-                  <ul>
-                    {searchResults.map((item, index) => (
-                      <li key={index} onClick={() => handleSelectItem(item)}>
-                        {item[1]}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="tableContainer">
+                  
+                    {/* Conditionally render the suggestion box based on isInputFocused */}
+                    {isInputFocused && (
+                      <div className='suggestionBox' style={{ display: showSuggestionBox ? 'block' : 'none' }}>
+                        <ul className='ulStyle'>
+                          {searchResults.map((item, index) => (
+                            <div className='liContainer'>
+                              <li className='liStyle' key={index} onClick={() => handleSelectItem(item)}>
+                                {item[1]}
+                              </li>
+                            </div>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  
+                  <div className="tableContainer1">
                     <table className="table">
                       <thead>
                         <tr>
@@ -261,14 +298,16 @@ function BorrowingForm() {
                           <th>Qty</th>
                           <th>Action</th>
                         </tr>
+                        
                       </thead>
-                      <tbody>
+                      <div className='yawa'></div>
+                      <tbody className='bodytable'>
                         {tableData.map((item, index) => (
                           <tr key={index}>
                             <td>{item.id}</td>
                             <td>{item.name}</td>
-                            <td>
-                              <button onClick={(e) => handleDecrement(index, e)}>-</button>
+                            <td className='editQty'>
+                              <button className='btndecrement' onClick={(e) => handleDecrement(index, e)}>-</button>
                               <input
                                 className='quantityInput'
                                 value={item.quantity}
@@ -287,15 +326,16 @@ function BorrowingForm() {
                                   }
                                 }}
                               />
-                              <button onClick={(e) => handleIncrement(index, e)}>+</button>
+                              <button className='btnincrement' onClick={(e) => handleIncrement(index, e)}>+</button>
                             </td>
                             <td>
-                              <button onClick={() => handleRemoveItem(index)}>Remove</button>
+                              <button className='removeBtnLink' onClick={() => handleRemoveItem(index)}>Remove</button>
                             </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
+                    <p className='totalItem'><b>Total Selected:</b></p>
                   </div>
                 </div>
               </div>
@@ -328,8 +368,7 @@ function BorrowingForm() {
                       }}
                       endAdornment={
                         <InputAdornment position="end">
-                          <button className="qrButton">
-                            <QrCodeScannerIcon />
+                          <button className="qrButton" onClick={QRopenModal}>
                           </button>
                         </InputAdornment>
                       }
@@ -344,9 +383,19 @@ function BorrowingForm() {
               </div>
             </div>
           </form>
+          <div className='btnsContainer1'>
+            <div>
+              <button className='reqBtn'>Request</button>
+            </div>
+            <div>
+              <button className='cancelBtn'>Cancel</button>
+            </div>
+          </div>
         </div>
+
       </div>
-      <div style={{ width: '100%' }}></div>
+
+      <div style={{ height: '100%' }}></div>
       {isModalOpen && (
         <QuantityModal
           selectedItem={selectedItem}
@@ -354,10 +403,6 @@ function BorrowingForm() {
           onAddToTable={handleAddToTable}
         />
       )}
-
-      {isQRModalOpen && (
-      <QRScannerModal isOpen={isQRModalOpen} onRequestClose={QRcloseModal} onScan={handleScan} />
-    )}
     </div>
   );
 }

@@ -22,15 +22,23 @@ const QuantityModal: React.FC<QuantityModalProps> = ({ selectedItem, onClose, on
   return (
     <div className="modal">
       <div className="modal-content">
-        <p>Selected Item: {selectedItem[1]}</p>
+        <h1 className='addText'>Add Item</h1>
+        <p className='itemName'>{selectedItem[1]}</p>
         <input
+          className='qtyInputField'
           type="number"
-          placeholder="Quantity"
+          placeholder="Example: 4"
           value={quantity}
           onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
         />
-        <button onClick={handleAddClick}>Add</button>
-        <button onClick={onClose}>Cancel</button>
+        <div className='btnsContainer'>
+          <div>
+            <button onClick={handleAddClick} className='addQtyBtn'>Add</button>
+          </div>
+          <div>
+            <button onClick={onClose} className='cancelQtyBtn'>Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
   );
