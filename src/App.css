@@ -1,41 +1,78 @@
 /* Login Styles */
 
-.logoContainer{
+input::-ms-reveal { 
+  display: none; 
+}
+
+.logoContainer, .form-container, .fpContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .mainlogo{
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 150px;
+  margin-bottom: 50px;
 }
 
 .grouplogo, .logo{
-  bottom: 0px;
-}
-
-.form-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.inputField {
-  width: 80%;
-  border: none;
-  border-bottom: 1px solid black;
-  height: 25px;
+  bottom: 2px;
 }
 
 .loginButton {
-  width: 85%;
+  margin-top: 30px;
+  width: 271px;
   border: none;
   background-color: #C8ECB8;
   height: 34px;
+  color: #0A4610;
+  font-weight: bolder;
+  border-radius: 10px;
   /* Remove these styles unless necessary */
   /* display: flex;
   justify-content: center; */
+}
+
+.fpContainer{
+  margin-top: 10px;
+}
+.forgotpass{
+  text-decoration: none;
+  color: black;
+}
+
+.labelButtonContainer{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.removeButton{
+  margin-right: 60px;
+  background-color: transparent;
+  border: none;
+}
+
+.removeButtonIcon{
+  color: red;
+}
+
+.addButtonContainer{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.addBButton{
+  background-color: #5CBD10;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  padding-bottom: 4px;
+  color: white;
+
 }
 
 /* End Login Page Styles */
@@ -43,3 +80,350 @@
 /* Forgot Password Styles */
 
 /* Borrow Form Styles */
+
+.pageBody{
+
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  
+}
+
+.arrowButton{
+  background-color: transparent;
+  border: none;
+}
+
+.headerContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin: 20px;
+}
+
+.allFormContainer{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: auto;
+}
+
+.firstFormContainer{
+  background-color: #CEE7C5;
+  height: 160px;
+  width: 95%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.qrButton{
+  background-color: transparent;
+  border: none;
+}
+
+label{
+  margin-left: 20px;
+}
+
+.inputField{
+  background-color: white;
+  margin-left: 20px;
+  width: 85%;
+}
+
+.firstfield{
+  background-color: white;
+  margin-left: 20px;
+  width: 90%;
+}
+
+.quantityInput{
+  width: 20px;
+  border: none;
+  text-align: center;
+}
+
+.editQty{
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 85px;
+}
+
+.btndecrement, .btnincrement{
+  background-color: transparent;
+  border: none;
+}
+
+.removeBtnLink{
+  background-color: transparent;
+  text-decoration: underline;
+  color: red;
+  border: none;
+}
+
+
+
+/* Table Styles */
+.tableContainer1{
+  margin-top: 20px;
+}
+
+table{
+  margin-left: 20px;
+  text-align: center;
+  width: 85%;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+  gap: 10px;
+}
+
+.yawa{
+  margin-top: 5px;
+}
+.headstyle{
+  border-bottom: 1px solid #000;
+}
+
+th {
+  padding-bottom: 5px;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #000; /* You can adjust the thickness and color */
+}
+
+td{
+  border-collapse: collapse;
+}
+
+.totalItem{
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 900px){
+  .allFormContainer{
+    width: 100%;
+  }
+
+  .firstFormContainer{
+    width: 100%;
+  }
+
+  .firstfield{
+    width: 87%;
+  }
+}
+
+/* Modal Styles */
+.modal{
+  background-color: #CFCFCF;
+  width: 80%;
+  display: flex;
+  height: 220px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-bottom: 20px;
+}
+
+.btnsContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.qtyInputField{
+  width: 250px;
+  border: none;
+  background-color: white;
+  height: 50px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.qrStyle{
+  height: 50%;
+  width: 100%;
+}
+
+.addText{
+  color: #1E1A4D;
+}
+
+.itemName{
+  color: #1E1A4D;
+  font-weight: bolder;
+}
+
+.addQtyBtn{
+  background-color: #C8ECB8;
+  color: #0A4610;
+  font-weight: bolder;
+  border: none;
+  border-radius: 8px;
+  width: 120px;
+  height: 43px;
+  margin-right: 5px;
+}
+.cancelQtyBtn{
+  background-color: #ECC4B8;
+  color: #460101;
+  font-weight: bolder;
+  border: none;
+  border-radius: 8px;
+  width: 120px;
+  height: 43px;
+}
+
+@media screen and (min-width: 900px){
+  .modal{
+    width: 316px;
+  }
+}
+/* End of Modal Styles */
+
+/* Suggestion Box Styles */
+
+.liStyle{
+  margin-bottom: 10px;
+  margin-left: 1px;
+  list-style-type: none;
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  width: 85%;
+
+}
+
+.suggestionBox{
+  background-color: white;
+  margin-left: 20px;
+  width: 84%;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  border: 1px solid gray;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.btnsContainer1{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  margin-left: 32px;
+  width: 100%;
+
+}
+
+/* End of Suggestion Box Styles */
+
+/* End of Borrowing Form Styles */
+
+/* Forgot Password Styles */
+
+.forgotPassPageContainer{
+  margin: 20px;
+}
+
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  text-align: left; /* Align the content inside 'content' to the left */
+}
+
+.hText{
+  color: #1E1A4D;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+label{
+  text-align: left !important;
+}
+
+
+.requestButton{
+  width: 309px;
+  height: 41px;
+  border: none;
+  border-radius: 5px;
+  background-color: #77C777;
+  color: #0A4610;
+  font-weight: bolder;
+}
+
+/* Request Confirm Styles */
+
+.requestConfirmPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  gap: 20px;
+}
+
+.requestDesc{
+  text-align: center;
+  font-size: 16px;
+  text-wrap: balance;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+.seeLiveBtn, .reqBtn{
+  background-color: #C8ECB8;
+  font-weight: bolder;
+  color: #134601;
+  border: none;
+  width: 80%;
+  border-radius: 10px;
+  height: 48px;
+}
+
+.cancelBtn{
+  background-color: #ECC4B8;
+  font-weight: bolder;
+  color: #460101;
+  border: none;
+  width: 80%;
+  border-radius: 10px;
+  height: 48px;
+}
+
+.backToHomeBtn{
+  background-color: white;
+  border: 1px solid #C8ECB8;
+  color: #134601;
+  font-weight: bolder;
+  width: 380px;
+  border-radius: 10px;
+  height: 48px;
+
+}
+
+@media screen and (max-width: 450px){
+  .seeLiveBtn{
+    width: 290px;
+  }
+
+  .backToHomeBtn{
+    width: 290px;
+  }
+}
