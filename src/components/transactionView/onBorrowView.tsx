@@ -1,12 +1,18 @@
 
 import header from '../../assets/headerlogo.png'
-
+import { Link } from 'react-router-dom';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useState } from 'react';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 function OnBorrowView() {
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleCheckClick = () => {
+      setIsChecked(!isChecked);
+    };
     
    
         const pendingItems = [
@@ -63,7 +69,9 @@ return (
     <div className='viewContent'>
       
        <div className="headerView">
-           <KeyboardBackspaceIcon className='viewArrowIcon'/>
+             <Link to ="/on-borrow" className='customArrowLink'>
+               <KeyboardBackspaceIcon className='viewArrowIcon'/>
+           </Link>
            <img src={header} alt="Header Logo" className="mainlogoView" />
         </div>
 
@@ -158,16 +166,20 @@ return (
 
                 <div className="viewConfirmation">
                     <div className="firstRowConfirm">
-                        <div className="checkIconButton">
-                            <CircleOutlinedIcon  className='customeCircle' sx={{ stroke: "white", strokeWidth: 1 }}/>
-                        </div>
+                    <div className={`checkIconButton ${isChecked ? 'checked' : ''}`} onClick={handleCheckClick}>
+                            {isChecked ? (
+                                <CheckCircleOutlineIcon className='customeCircle' sx={{ stroke: 'white', strokeWidth: 1 }} />
+                            ) : (
+                                <CircleOutlinedIcon className='customeCircle' sx={{ stroke: 'white', strokeWidth: 1 }} />
+                            )}
+                            </div>
                         <div className="confirmationTxt">
-                            I certify that the above item(s) wil be returned in good condition.
+                            I certify that the above item(s) wil be <span> returned</span> in good condition.
                         </div>
 
                     </div>
 
-                    <div className="returnViewButton">
+                    <div className={`returnViewButton ${isChecked ? 'iconChecked' : ''}`}>
                         Return
                     </div>
                 </div>

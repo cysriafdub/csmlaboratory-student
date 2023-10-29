@@ -1,5 +1,7 @@
 /* Login Styles */
-
+*{
+  text-decoration: none;
+}
 .logoContainer{
   display: flex;
   flex-direction: column;
@@ -107,7 +109,7 @@
 .status span{
   color: #45A54E;
 
-  font-weight: 700;
+  
 }
 .rightlabel{
   
@@ -240,6 +242,7 @@ D-3C */
   padding: 10px 10px 0px 10px;
   flex-direction: column;
   margin-bottom: 8px;
+  text-decoration: none;
 
 }
 .transactionContainerBreakage{
@@ -403,6 +406,12 @@ D-3C */
  
 
 }
+.customArrowLink:active{
+  text-decoration: none;
+  color: #000; 
+  outline: none; 
+  box-shadow: none;
+}
 .viewArrowIcon{
   height: 4px;
   width: 4px;
@@ -542,8 +551,7 @@ D-3C */
   text-align: center;
  
   font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
+
   margin: 20px 25px 0px 25px;
   background: #FFE9E9;
 
@@ -560,16 +568,16 @@ D-3C */
   color: #D9A92E;
   text-align: center;
   font-size: 11px;
-  font-style: normal;
+  
   font-weight: 700;
   
 }
 .viewStatusBreakage span{
-  color: hsla(0, 100%, 11%, 1);
+  color: #360000;
   text-align: center;
   font-size: 11px;
-  font-style: normal;
   font-weight: 700;
+
 }
 .viewPaperContent{
   background-color: rgb(255, 255, 255);
@@ -651,7 +659,7 @@ D-3C */
   flex-direction: row;
 }
 .viewEachInfo, .viewItemLeft{
-  margin-top: 5px;
+  margin-top: 0px;
   display: flex;
   flex-direction: row;
   font-size: 12px;
@@ -758,6 +766,9 @@ D-3C */
   font-weight: 400;
   margin-left: 10px;
 }
+.confirmationTxt span{
+  font-weight: 700;
+}
 .customCircle{
   color: #000000B2;
 
@@ -779,8 +790,17 @@ D-3C */
   background: rgba(154, 154, 154, 0.40);
   margin-top: 10px;
 
+  color: #5C5C5C;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
 
 
+
+}
+.iconChecked{
+  background-color: #C8ECB8;
+  color: #134601;
 }
 /*breakage details*/
 .viewBreakageRight{

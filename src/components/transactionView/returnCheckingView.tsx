@@ -8,6 +8,8 @@ import { useState } from 'react';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
 import CheckIcon from '@mui/icons-material/Check'; 
+
+import { Link } from 'react-router-dom';
 function ReturnCheckingView() {
     
    
@@ -64,7 +66,9 @@ function ReturnCheckingView() {
                 <div className='viewContent'>
                   
                    <div className="headerView">
-                       <KeyboardBackspaceIcon className='viewArrowIcon'/>
+                   <Link to ="/return" className='customArrowLink'>
+                        <KeyboardBackspaceIcon className='viewArrowIcon'/>
+                    </Link>
                        <img src={header} alt="Header Logo" className="mainlogoView" />
                     </div>
             

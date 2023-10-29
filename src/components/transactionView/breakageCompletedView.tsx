@@ -7,6 +7,7 @@ import { useState } from 'react';
 import CircleIcon from '@mui/icons-material/Circle';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CheckIcon from '@mui/icons-material/Check'; 
+import { Link } from 'react-router-dom';
 function BreakageCompletedView() {
     
    
@@ -51,8 +52,7 @@ function BreakageCompletedView() {
                 Dept: 'BSCHEMISTRY'
                 
             }   
-            ]
-    
+        ]
 
 
      
@@ -64,7 +64,9 @@ return (
     <div className='viewContent'>
       
        <div className="headerView">
-           <KeyboardBackspaceIcon className='viewArrowIcon'/>
+            <Link to ="/breakage" className='customArrowLink'>
+                <KeyboardBackspaceIcon className='viewArrowIcon'/>
+            </Link>
            <img src={header} alt="Header Logo" className="mainlogoView" />
         </div>
 
@@ -202,9 +204,9 @@ return (
             </div>
             ))}
 
-               <div className="doneViewButton">
+               <Link to ="/breakage" className="doneViewButton">
             Done View
-        </div>
+        </Link>
 
     </div>
     );

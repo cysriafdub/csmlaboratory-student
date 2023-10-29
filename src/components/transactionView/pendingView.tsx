@@ -4,7 +4,7 @@ import header from '../../assets/headerlogo.png'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import CheckIcon from '@mui/icons-material/Check'; 
 function PendingView() {
     
@@ -63,7 +63,9 @@ return (
     <div className='viewContent'>
       
        <div className="headerView">
-           <KeyboardBackspaceIcon className='viewArrowIcon'/>
+            <Link to ="/pending" className='customArrowLink'>
+               <KeyboardBackspaceIcon className='viewArrowIcon'/>
+           </Link>
            <img src={header} alt="Header Logo" className="mainlogoView" />
         </div>
 
@@ -179,9 +181,9 @@ return (
             </div>
             ))}
 
-        <div className="doneViewButton">
+        <Link to="/pending" className="doneViewButton">
             Done View
-        </div>
+        </Link>
         <div className="cancelViewButton">
             Cancel Request
         </div>

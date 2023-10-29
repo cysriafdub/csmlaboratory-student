@@ -6,10 +6,17 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import { useState } from 'react';
 import CircleIcon from '@mui/icons-material/Circle';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-import CheckIcon from '@mui/icons-material/Check'; 
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+
+import { Link } from 'react-router-dom';
 function BreakageView() {
     
-   
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleCheckClick = () => {
+      setIsChecked(!isChecked);
+    };
+    
         const pendingItems = [
             {
               id: 1034,
@@ -64,7 +71,9 @@ return (
     <div className='viewContent'>
       
        <div className="headerView">
-           <KeyboardBackspaceIcon className='viewArrowIcon'/>
+         <Link to ="/breakage" className='customArrowLink'>
+               <KeyboardBackspaceIcon className='viewArrowIcon'/>
+           </Link>
            <img src={header} alt="Header Logo" className="mainlogoView" />
         </div>
 
@@ -182,17 +191,21 @@ return (
 
                 <div className="viewConfirmation">
                     <div className="firstRowConfirm">
-                        <div className="checkIconButton">
-                            <CircleOutlinedIcon  className='customeCircle' sx={{ stroke: "white", strokeWidth: 1 }}/>
-                        </div>
+                    <div className={`checkIconButton ${isChecked ? 'checked' : ''}`} onClick={handleCheckClick}>
+                            {isChecked ? (
+                                <CheckCircleOutlineIcon className='customeCircle' sx={{ stroke: 'white', strokeWidth: 1 }} />
+                            ) : (
+                                <CircleOutlinedIcon className='customeCircle' sx={{ stroke: 'white', strokeWidth: 1 }} />
+                            )}
+                    </div>
                         <div className="confirmationTxt">
-                        I certify that the above item(s) will be replaced.<br/>
+                        I certify that the above item(s) will be <span>replaced</span>.<br/>
                          Make sure the replacement item(s) are ready to submit before clicking comply.
                         </div>
 
                     </div>
 
-                    <div className="returnViewButton">
+                    <div className={`returnViewButton ${isChecked ? 'iconChecked' : ''}`}>
                         Comply
                     </div>
                 </div>
