@@ -7,7 +7,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Input from '@mui/material/Input';
 import IconButton from '@mui/material/IconButton';
-
+import { Link } from 'react-router-dom';
 function Login() {
     const [showPassword, setShowPassword] = useState(false);
 
@@ -62,7 +62,8 @@ function Login() {
                             }
                         />
                     </div>
-                    <div className='form-container'><button className='loginButton'>Login</button></div>
+                    <div className='form-container'> 
+                    <Link to='/dashboard' className='loginButton'>Login</Link></div>
                 </form>
                 <div className='fpContainer'> <a className='forgotpass' href='/'>Forgot Password?</a></div>
             </div>

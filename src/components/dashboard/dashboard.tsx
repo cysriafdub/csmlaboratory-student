@@ -83,10 +83,10 @@ return (
                 </div>
                 </div>
             </div>
-            <div className="rightlabel">
+            <Link to='/' className="rightlabel">
                         <LogoutIcon className='logoutIcon'/>
                         <div className='rightText'> Logout </div>
-            </div>
+            </Link>
         </div>
 
         <div className="dashboardLabel">
@@ -94,9 +94,9 @@ return (
         </div>
 
 
-        <div className="borrowItemsButton">
+        <Link to ='/borrow-form' className="borrowItemsButton">
             Click to Request Borrow Items
-        </div>
+        </Link>
 
         
 

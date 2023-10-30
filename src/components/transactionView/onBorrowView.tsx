@@ -179,9 +179,21 @@ return (
 
                     </div>
 
-                    <div className={`returnViewButton ${isChecked ? 'iconChecked' : ''}`}>
-                        Return
-                    </div>
+                    <div>
+
+                        {isChecked ? (
+                            <Link to="/pending">
+                            <div className="returnViewButton active">
+                                Return
+                            </div>
+                            </Link>
+                        ) : (
+                            <div className="returnViewButton">
+                            Return
+                            </div>
+                        )}
+                        </div>
+                    
                 </div>
             </div>
             ))}
