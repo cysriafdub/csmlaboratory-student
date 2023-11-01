@@ -19,7 +19,9 @@ function App() {
     <Router>
     <div className="App">
       <Routes>
-          <Route path="/" element={<DashboardScreen />} />
+          <Route path="/" element={<Login/>} />
+          <Route path="/borrow-form" element={<BorrowingForm />} />
+          <Route path="/dashboard" element={<DashboardScreen />} />
           <Route path="/pending" element={<DashboardScreen />} />
           <Route path="/on-borrow" element={<DashboardScreen/>} />
           <Route path="/return" element={<DashboardScreen/>} />

@@ -7,6 +7,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import { Link } from 'react-router-dom';
 
 
 interface Borrower {
@@ -163,9 +164,9 @@ function BorrowingForm() {
       <div className="headerContainer">
         {/* Arrow in the Header */}
         <div className="arrowContainer">
-          <button className="arrowButton">
+          <Link to="/" className="customArrowLink">
             <ArrowBackIcon sx={{ width: 30, height: 30 }} />
-          </button>
+          </Link>
         </div>
         <div className="logoContainer">
           <img src={HeaderLogo} alt="logo" />

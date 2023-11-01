@@ -1,7 +1,9 @@
 /* Login Styles */
-*{
-  text-decoration: none;
-}
+
+  *{
+    text-decoration: none;
+  }
+
 input::-ms-reveal { 
   display: none; 
 }
@@ -30,9 +32,10 @@ input::-ms-reveal {
   color: #0A4610;
   font-weight: bolder;
   border-radius: 10px;
-  /* Remove these styles unless necessary */
-  /* display: flex;
-  justify-content: center; */
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .fpContainer{
@@ -444,7 +447,18 @@ label{
 .DashboardContent{
   margin-left: 10px;
   margin-right: 10px;
-  
+
+}
+@media screen and (min-width: 900px){
+  .DashboardContent{
+    width: 900px;
+    margin: 0 auto;
+
+  }
+  .viewContent{
+    width: 900px;
+    margin: 0 auto;
+  }
 }
 .firstContent{
    display: flex;
@@ -771,10 +785,11 @@ D-3C */
 
 .viewContent{
   background-color:rgba(234, 234, 234, 0.427);
-  max-height: 700px;
+  max-height: 900px;
   overflow-y: auto;
  
 }
+
 .headerView{
   display: flex;
   justify-content: space-between;
@@ -788,6 +803,9 @@ D-3C */
   height: 30px;
  
 
+}
+.customArrowLink{
+  color:#000
 }
 .customArrowLink:active{
   text-decoration: none;
@@ -1172,6 +1190,7 @@ D-3C */
   border-radius: 10px;
   background: rgba(154, 154, 154, 0.40);
   margin-top: 10px;
+  margin-bottom: 10px;
 
   color: #5C5C5C;
   font-size: 14px;
@@ -1181,7 +1200,7 @@ D-3C */
 
 
 }
-.iconChecked{
+.returnViewButton.active{
   background-color: #C8ECB8;
   color: #134601;
 }
