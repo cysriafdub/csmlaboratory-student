@@ -1,6 +1,7 @@
 import * as React from 'react';
 import BorrowLogo from '../../assets/BorrowLogo.png'
 import Check from '../../assets/check.png'
+import { Link } from 'react-router-dom';
 
 function RequestConfirm() {
     return (
@@ -19,10 +20,14 @@ Your request ID is </p>
                 <h1>#001</h1>
             </div>
             <div className='seeLiveBtnContainer'>
-                <button className='seeLiveBtn'>See Live Status</button>
+                <Link to="/pending/view/:id">
+                    <button className='seeLiveBtn'>See Live Status</button>
+                </Link>
             </div>
             <div>
-                <button className='backToHomeBtn'>Back to Home</button>
+                <Link to="/dashboard">
+                    <button className='backToHomeBtn'>Back to Home</button>
+                </Link>
             </div>
 
         </div>

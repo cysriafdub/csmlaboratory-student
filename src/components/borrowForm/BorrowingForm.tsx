@@ -164,7 +164,7 @@ function BorrowingForm() {
       <div className="headerContainer">
         {/* Arrow in the Header */}
         <div className="arrowContainer">
-          <Link to="/" className="customArrowLink">
+          <Link to="/dashboard" className="customArrowLink">
             <ArrowBackIcon sx={{ width: 30, height: 30 }} />
           </Link>
         </div>
@@ -367,10 +367,14 @@ function BorrowingForm() {
           </form>
           <div className='btnsContainer1'>
             <div>
-              <button className='reqBtn'>Request</button>
+              <Link to="/request-confirm">
+                <button className='reqBtn'>Request</button>
+              </Link>
             </div>
             <div>
-              <button className='cancelBtn'>Cancel</button>
+              <Link to="/dashboard">
+                <button className='cancelBtn'>Cancel</button>
+              </Link>
             </div>
           </div>
         </div>

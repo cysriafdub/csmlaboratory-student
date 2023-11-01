@@ -392,12 +392,22 @@ label{
 }
 
 
-.seeLiveBtn, .reqBtn{
+.reqBtn{
   background-color: #C8ECB8;
   font-weight: bolder;
   color: #134601;
   border: none;
   width: 80%;
+  border-radius: 10px;
+  height: 48px;
+}
+
+.seeLiveBtn{
+  background-color: #C8ECB8;
+  font-weight: bolder;
+  color: #134601;
+  border: none;
+  width: 380px;
   border-radius: 10px;
   height: 48px;
 }
