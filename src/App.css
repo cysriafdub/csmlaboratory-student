@@ -706,7 +706,7 @@ D-3C */
   margin-right: 10px;
   
 }
-.penStatus{
+.penStatus, .retStatusChecking{
   color: #E1A304;
   font-size: 11px;
   font-style: normal;
@@ -720,7 +720,7 @@ D-3C */
   
 
 }
-.retStatus{
+.retStatusCompleted, .breakStatusCompleted{
   color: hsla(126, 58%, 21%, 1);
   font-size: 11px;
   font-style: normal;
@@ -1165,7 +1165,7 @@ D-3C */
 /* on borrow confirmation */
 
 .viewConfirmation{
-  background-color: white;
+  background-color:rgba(234, 234, 234, 0.427);
   margin: 0px 25px 0px 25px
 }
 .confirmationTxt{

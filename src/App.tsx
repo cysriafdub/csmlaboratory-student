@@ -30,8 +30,10 @@ function App() {
 
           <Route path="/pending/view/:id" element={<PendingView/>} />
           <Route path="/on-borrow/view/:id" element={<OnBorrowView/>} />
-          <Route path="/return/view/:id" element={<ReturnCompletedView/>} />
+          <Route path="/return/view/checking/:id" element={<ReturnCheckingView/>} />
+          <Route path="/return/view/completed/:id" element={<ReturnCompletedView/>} />
           <Route path="/breakage/view/:id" element={<BreakageView/>} />
+          <Route path="/breakage/view/completed/:id" element={<BreakageCompletedView/>} />
 
 
 

@@ -43,7 +43,13 @@ function DashboardScreen() {
           date: 'August 19, 2023',
           time: '9:00am',
           status: 'Completed'
-        }
+        },
+        {
+            id: 1034,
+            date: 'August 19, 2023',
+            time: '9:00am',
+            status: 'Checking'
+          }
         
        
       ]
@@ -52,8 +58,14 @@ function DashboardScreen() {
           id: 1034,
           date: 'August 19, 2023',
           time: '9:00am',
-          status: 'Breakage'
-        }
+          status: 'Completed'
+        },
+        {
+            id: 1034,
+            date: 'August 19, 2023',
+            time: '9:00am',
+            status: 'Breakage'
+          }
         
        
       ]
@@ -224,58 +236,88 @@ return (
             ))
             )}
         
-        {selectedItem === 'return' && (
-          
-            returnItems.map((item) =>(
-
-                <Link to ={`/return/view/${item.id}`} className="transactionContainer">
+        {
+        selectedItem === 'return' && (
+            returnItems.map((item) => (
+            <Link
+                to={item.status === 'Completed' ? `/return/view/completed/${item.id}` : `/return/view/checking/${item.id}`}
+                className="transactionContainer"
+                key={item.id}
+            >
                 <div className="transFirstRow">
-                    <div className="transactionID">
-                             Transaction ID #{item.id}
-                    </div>
-                    <div className="currentStatus">
-                            <div className="iconCurrentStatus">
-                            <CircleIcon className='retStatus'/>
-                            
-                           </div>
-                           <div className='retStatus'> {item.status}  </div>
-
-                    </div>
-
+                <div className="transactionID">
+                    Transaction ID #{item.id}
                 </div>
-
+                <div className="currentStatus">
+                    <div className="iconCurrentStatus">
+                    <CircleIcon
+                        className={
+                        item.status === 'Completed'
+                            ? 'retStatusCompleted'
+                            : 'retStatusChecking'
+                        }
+                    />
+                    </div>
+                    <div
+                    className={
+                        item.status === 'Completed'
+                        ? 'retStatusCompleted'
+                        : 'retStatusChecking'
+                    }
+                    >
+                    {item.status}
+                    </div>
+                </div>
+                </div>
 
                 <div className="transSecondRow">
-                        <div className="timeanddate">
-                        <div>{item.date}</div> 
-                        <div>{item.time}</div>
-                        </div>
-
-                       
-
-                        
+                <div className="timeanddate">
+                    <div>{item.date}</div>
+                    <div>{item.time}</div>
                 </div>
-                    
+                </div>
+
                 <div className="transThirdRow">
                     Tap to View
                 </div>
             </Link>
             ))
-            )}
+        )
+        }
+
             
         {selectedItem === 'breakage' && (
             breakageItems.map((item)=>(
-                <Link to ={`/breakage/view/${item.id}`} className="transactionContainerBreakage">
+                <Link
+                to={item.status === 'Completed' ? `/breakage/view/completed/${item.id}` : `/breakage/view/${item.id}`}
+                className="transactionContainerBreakage"
+                key={item.id}
+            >
                 <div className="transFirstRow">
                     <div className="transactionID">
                     Transaction ID #{item.id}
                     </div>
                     <div className="currentStatus">
                             <div className="iconCurrentStatus">
-                            <CircleIcon className='breakStatus'/>
+                         
+                            <CircleIcon
+                                className={
+                                item.status === 'Completed'
+                                    ? 'breakStatusCompleted'
+                                    : 'breakStatus'
+                                }
+                            />
                             
                            </div>
-                           <div className='breakStatus'> {item.status}</div>
+                           <div
+                            className={
+                                item.status === 'Completed'
+                                ? 'breakStatusCompleted'
+                                : 'breakStatus'
+                            }
+                            >
+                            {item.status}
+                            </div>
 
                     </div>
 
