@@ -13,12 +13,15 @@ import BreakageView from './components/transactionView/breakageView';
 import BreakageCompletedView from './components/transactionView/breakageCompletedView';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ForgotPassword from './components/forgotPassword/ForgotPassword';
+import Footer from './components/footer/footer';
 
 function App() {
   return (
     <Router>
     <div className="App">
+      <Footer/>
       <Routes>
+          
           <Route path="/" element={<Login/>} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path="/borrow-form" element={<BorrowingForm />} />
