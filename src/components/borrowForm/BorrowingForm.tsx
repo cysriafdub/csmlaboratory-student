@@ -30,8 +30,6 @@ function BorrowingForm() {
     ["004", "Bowl", 2, "Delete"],
   ];
 
-  const [data, setData] = useState<string>('No result');
-
   const [borrowers, setBorrowers] = useState<Borrower[]>([{ id: 1, studentId: "" }]);
 
   const addBorrower = (e: MouseEvent<HTMLButtonElement>) => {
