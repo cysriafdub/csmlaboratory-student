@@ -2,14 +2,17 @@ import * as React from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { InputAdornment, TextField } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+import { Link } from 'react-router-dom';
 
 function ForgotPassword() {
     return (
         <div className='forgotPassPageContainer'>
             <div className="arrowContainer">
-                <button className="arrowButton">
-                    <ArrowBackIcon sx={{ width: 40, height: 40 }} />
-                </button>
+                <Link to="/">
+                    <button className="arrowButton">
+                        <ArrowBackIcon sx={{ width: 40, height: 40 }} />
+                    </button>
+                </Link>
             </div>
             <div className='contentContainer'>
                 <div className='content'>

@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import BorrowingForm from './components/borrowForm/BorrowingForm';
-import ForgotPassword from './components/forgotPassword/ForgotPassword';
 import RequestConfirm from './components/requestConfirm/RequestConfirm';
 import Login from './components/login/Login';
 import DashboardScreen from './components/dashboard/dashboard';
@@ -13,6 +12,7 @@ import ReturnCheckingView from './components/transactionView/returnCheckingView'
 import BreakageView from './components/transactionView/breakageView';
 import BreakageCompletedView from './components/transactionView/breakageCompletedView';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ForgotPassword from './components/forgotPassword/ForgotPassword';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
     <div className="App">
       <Routes>
           <Route path="/" element={<Login/>} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path="/borrow-form" element={<BorrowingForm />} />
           <Route path='/request-confirm' element={<RequestConfirm />} />
           <Route path="/dashboard" element={<DashboardScreen />} />

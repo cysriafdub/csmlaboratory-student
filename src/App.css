@@ -16,7 +16,7 @@ input::-ms-reveal {
 
 .mainlogo{
   margin-top: 150px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 .grouplogo, .logo{
@@ -25,17 +25,21 @@ input::-ms-reveal {
 
 .loginButton {
   margin-top: 30px;
-  width: 271px;
+  width: 300px;
   border: none;
   background-color: #C8ECB8;
   height: 34px;
   color: #0A4610;
   font-weight: bolder;
-  border-radius: 10px;
+  border-radius: 5px;
   
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.loginbtncontainer{
+  margin-top: 30px;
 }
 
 .fpContainer{
@@ -231,10 +235,11 @@ td{
   align-items: center;
   border-radius: 10px;
   position: absolute;
-  top: 50%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding-bottom: 20px;
+
 }
 
 .btnsContainer{

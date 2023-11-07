@@ -62,14 +62,7 @@ function BorrowingForm() {
     setInputFocused(true);
   };
 
-  const handleInputBlur = () => {
-    setTimeout(() => {
-      if (document.activeElement && !document.activeElement.classList.contains('suggestionItem')) {
-        // Hide the suggestion box when the input field loses focus
-        setShowSuggestionBox(false);
-      }
-    }, 100);
-  };
+
   
   
 

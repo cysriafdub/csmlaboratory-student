@@ -27,8 +27,9 @@ function Login() {
                             id="input-with-icon-textfield"
                             placeholder='ID Number'
                             sx={{
-                                width: 271,
+                                width: 300,
                                 marginBottom: 3,
+                                borderColor: 'black'
                             }}
                             InputProps={{
                                 endAdornment: (
@@ -46,7 +47,7 @@ function Login() {
                             type={showPassword ? 'text' : 'password'}
                             placeholder='Password'
                             sx={{
-                                width: 271
+                                width: 300,
                             }}
                             endAdornment={
                                 <InputAdornment position="end">
@@ -62,10 +63,14 @@ function Login() {
                             }
                         />
                     </div>
-                    <div className='form-container'> 
+                    <div className='form-container loginbtncontainer'> 
                     <Link to='/dashboard' className='loginButton'>Login</Link></div>
                 </form>
-                <div className='fpContainer'> <a className='forgotpass' href='/'>Forgot Password?</a></div>
+                <div className='fpContainer'> 
+                    <Link to="/forgot-password">
+                        <a className='forgotpass' href='/'>Forgot Password?</a>
+                    </Link>
+                </div>
             </div>
         </div>
     );
