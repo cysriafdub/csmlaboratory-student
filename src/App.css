@@ -425,6 +425,7 @@ label{
   width: 80%;
   border-radius: 10px;
   height: 48px;
+  margin-bottom: 10px;
 }
 
 .backToHomeBtn{
@@ -467,11 +468,13 @@ label{
 @media screen and (min-width: 900px){
   .DashboardContent{
     width: 900px;
+    
     margin: 0 auto;
 
   }
   .viewContent{
     width: 900px;
+    height: 570px;
     margin: 0 auto;
   }
 }
@@ -646,6 +649,7 @@ D-3C */
 .transactionView{
   margin-top: 25px;
 
+
 }
 .transactionContainer{
   border-radius: 7px;
@@ -802,6 +806,7 @@ D-3C */
   background-color:rgba(234, 234, 234, 0.427);
   max-height: 900px;
   overflow-y: auto;
+
  
 }
 
@@ -1322,3 +1327,17 @@ D-3C */
   line-height: normal;
 
 }
+
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 10px;
+} */
