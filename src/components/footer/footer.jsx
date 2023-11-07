@@ -3,9 +3,9 @@ import newjeans from "../../assets/Footer.png"
 function Footer(){
     return (
 
-        <div className="imgFooter">
+        <footer className="imgFooter">
             <img src={newjeans} alt="footer" className="newjeans"></img>
-        </div>
+        </footer>
     );
 }
 

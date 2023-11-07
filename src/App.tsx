@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <Footer/>
+      
       <Routes>
           
           <Route path="/" element={<Login/>} />
@@ -42,7 +42,9 @@ function App() {
 
 
       </Routes>
+      <Footer/>
     </div>
+
     </Router>
   );
 }

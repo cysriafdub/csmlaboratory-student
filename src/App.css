@@ -425,6 +425,7 @@ label{
   width: 80%;
   border-radius: 10px;
   height: 48px;
+  margin-bottom: 10px;
 }
 
 .backToHomeBtn{
@@ -475,7 +476,6 @@ label{
     width: 900px;
     height: 570px;
     margin: 0 auto;
-
   }
 }
 .firstContent{
@@ -649,6 +649,7 @@ D-3C */
 .transactionView{
   margin-top: 25px;
 
+
 }
 .transactionContainer{
   border-radius: 7px;
@@ -805,6 +806,7 @@ D-3C */
   background-color:rgba(234, 234, 234, 0.427);
   max-height: 900px;
   overflow-y: auto;
+
  
 }
 
@@ -1325,11 +1327,17 @@ D-3C */
   line-height: normal;
 
 }
-.imgFooter {
-  width: calc(100% - 20px);
+
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* footer{
   display: flex;
   justify-content: center;
-  position: fixed;
-  bottom: 0;
-  z-index: 999; 
-}
+  align-items: center;
+  top: 0;
+  bottom: 10px;
+} */
