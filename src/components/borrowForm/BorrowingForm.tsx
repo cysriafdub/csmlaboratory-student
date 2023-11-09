@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, MouseEvent, useRef, useEffect } from 'react';
+import React, { useState, ChangeEvent, MouseEvent, useRef, useEffect, FormEvent } from 'react';
 import QuantityModal from './QuantityModal';
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import HeaderLogo from "../../assets/headerlogo.png";
@@ -7,7 +7,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 
 
 interface Borrower {
@@ -149,6 +149,50 @@ function BorrowingForm() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+
+  const [isFormValid, setIsFormValid] = useState(false);
+  const navigate = useNavigate()
+
+  const validateForm = () => {
+    // Define your custom validation logic here.
+    // Check if all required fields are filled out and set isFormValid accordingly.
+
+    // For example, you can check if the student ID field is not empty.
+    const isStudentIdValid = borrowers.every(borrower => borrower.studentId.trim() !== '');
+
+    // Add more validation checks for other required fields as needed.
+
+    setIsFormValid(isStudentIdValid /* && otherValidationChecks */);
+  };
+
+  // Call the validateForm function whenever the form data changes
+  useEffect(() => {
+    validateForm();
+  }, [borrowers]); // You may want to include other form data in the dependency array if needed
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (isFormValid) {
+      if (tableData.length > 0) {
+        // The form is valid, and the table is not empty, so you can proceed with form submission or other actions.
+        // Handle the form submission logic here.
+        console.log('Form submitted');
+        navigate('/request-confirm');
+      } else {
+        // Display an error message because the table is empty.
+        setFormSubmitted(true);
+      }
+    } else {
+      alert('Please fill out all required fields.');
+    }
+  };
+  
+
+  // ... (rest of your component)
+
   return (
     <div className="pageBody">
       {/* Header */}
@@ -170,7 +214,7 @@ function BorrowingForm() {
           <h1>Fill-up Form</h1>
         </div>
         <div className="formContainer">
-          <form>
+          <form onSubmit={handleSubmit} action='/request-confirm'>
             {/* First form container includes student id and course input fields */}
             <div className="firstFormContainer">
               {/* Student ID input, use material UI for the input fields */}
@@ -182,11 +226,13 @@ function BorrowingForm() {
                   id="standard-adornment"
                   className="firstfield"
                   placeholder="Student ID"
+                  required
                   endAdornment={
                     <InputAdornment position="end">
                       <button className="qrButton">
                       </button>
                     </InputAdornment>
+                    
                   }
                 />
               </div>
@@ -194,7 +240,7 @@ function BorrowingForm() {
                 <label>Course</label>
               </div>
               <div>
-                <OutlinedInput className="firstfield" placeholder="Course" />
+                <OutlinedInput className="firstfield" placeholder="Course" required />
               </div>
             </div>
             <div className="secondFormContainer">
@@ -206,6 +252,7 @@ function BorrowingForm() {
                   id="standard-adornment"
                   className="inputField"
                   placeholder="Lab Instructor"
+                  required
                   endAdornment={
                     <InputAdornment position="end">
                       <SearchIcon />
@@ -220,6 +267,7 @@ function BorrowingForm() {
                 <OutlinedInput
                   className="inputField"
                   placeholder="Subject"
+                  required
                   endAdornment={
                     <InputAdornment position="end">
                       <SearchIcon />
@@ -308,6 +356,9 @@ function BorrowingForm() {
                         ))}
                       </tbody>
                     </table>
+                    {formSubmitted && tableData.length === 0 && (
+                      <p className="errorMessage">Please select at least one item in the table.</p>
+                    )}
                     <p className='totalItem'><b>Total Selected:</b></p>
                   </div>
                 </div>
@@ -329,6 +380,7 @@ function BorrowingForm() {
                       className="inputField"
                       value={borrower.studentId}
                       placeholder="Student ID"
+                      required
                       onChange={(e) => {
                         const { value } = e.target;
                         setBorrowers((prevBorrowers) =>
@@ -355,19 +407,19 @@ function BorrowingForm() {
                 </div>
               </div>
             </div>
+            <div className='btnsContainer1'>
+              <div>
+                  <button type='submit' className='reqBtn'>Request</button>
+
+              </div>
+              <div>
+                <Link to="/dashboard">
+                  <button className='cancelBtn'>Cancel</button>
+                </Link>
+              </div>
+            </div>
           </form>
-          <div className='btnsContainer1'>
-            <div>
-              <Link to="/request-confirm">
-                <button className='reqBtn'>Request</button>
-              </Link>
-            </div>
-            <div>
-              <Link to="/dashboard">
-                <button className='cancelBtn'>Cancel</button>
-              </Link>
-            </div>
-          </div>
+          
         </div>
 
       </div>

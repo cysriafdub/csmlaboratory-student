@@ -211,6 +211,11 @@ td{
   margin-left: 20px;
 }
 
+.errorMessage{
+  color: red;
+  margin-left: 20px;
+}
+
 @media screen and (max-width: 900px){
   .allFormContainer{
     width: 100%;
