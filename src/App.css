@@ -42,6 +42,14 @@ input::-ms-reveal {
   margin-top: 30px;
 }
 
+.error-message{
+  margin-top: 10px;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .fpContainer{
   margin-top: 10px;
 }
@@ -87,6 +95,10 @@ input::-ms-reveal {
 /* End Login Page Styles */
 
 /* Forgot Password Styles */
+
+.backtoLoginBtn{
+  color: #C8ECB8;
+}
 
 /* Borrow Form Styles */
 

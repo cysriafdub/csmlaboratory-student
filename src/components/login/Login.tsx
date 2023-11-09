@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import LoginLogo from '../../assets/LoginLogo.png'
+import React, { useState, MouseEvent } from 'react';
+import LoginLogo from '../../assets/LoginLogo.png';
 import PersonIcon from '@mui/icons-material/Person';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
@@ -7,19 +7,41 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Input from '@mui/material/Input';
 import IconButton from '@mui/material/IconButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 function Login() {
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [idNumber, setIdNumber] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
+    const history = useNavigate()
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
+    };
+
+    const handleLogin = () => {
+        if (idNumber === 'yourValidIDNumber' && password === 'yourValidPassword') {
+            // Successful login, no error message
+            setError('');
+            history("/dashboard");
+        } else {
+            // Invalid login, set the error message if both fields are not empty
+            if (idNumber && password) {
+                setError('Invalid ID Number or Password');
+            } else {
+                setError('');
+            }
+        }
     };
 
     return (
         <div className='loginContainer'>
-            <div className='logoContainer mainlogo'><img className='logo' src={LoginLogo} alt="Login Logo" /></div>
+            <div className='logoContainer mainlogo'>
+                <img className='logo' src={LoginLogo} alt="Login Logo" />
+            </div>
             <div>
                 <form>
                     <div className='form-container'>
@@ -39,6 +61,8 @@ function Login() {
                                 ),
                             }}
                             variant="standard"
+                            value={idNumber}
+                            onChange={(e) => setIdNumber(e.target.value)}
                         />
                     </div>
                     <div className='form-container'>
@@ -61,14 +85,22 @@ function Login() {
                                     </IconButton>
                                 </InputAdornment>
                             }
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
-                    <div className='form-container loginbtncontainer'> 
-                    <Link to='/dashboard' className='loginButton'>Login</Link></div>
+                    {error && <div className='error-message'>{error}</div>}
+                    <div className='form-container loginbtncontainer'>
+                        <button className='loginButton' type="button" onClick={handleLogin}>
+                            Login
+                        </button>
+                    </div>
                 </form>
-                <div className='fpContainer'> 
+                <div className='fpContainer'>
                     <Link to="/forgot-password">
-                        <a className='forgotpass' href='/'>Forgot Password?</a>
+                        <a className='forgotpass' href='/'>
+                            Forgot Password?
+                        </a>
                     </Link>
                 </div>
             </div>
