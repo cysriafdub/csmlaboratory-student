@@ -94,6 +94,8 @@ input::-ms-reveal {
 
 /* End Login Page Styles */
 
+
+
 /* Forgot Password Styles */
 
 .backtoLoginBtn{
@@ -153,6 +155,22 @@ label{
   background-color: white;
   margin-left: 20px;
   width: 85%;
+}
+
+.drop{
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.selectform{
+  width: 89%;
+}
+.labelContain{
+  margin-top: 10px;
+}
+
+.whatever{
+  margin-left: 0;
 }
 
 .firstfield{

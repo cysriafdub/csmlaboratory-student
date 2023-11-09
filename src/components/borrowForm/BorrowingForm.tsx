@@ -9,6 +9,11 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { Link, useNavigate  } from 'react-router-dom';
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 
 interface Borrower {
   id: number;
@@ -29,6 +34,21 @@ function BorrowingForm() {
     ["003", "Glass", 4, "Delete"],
     ["004", "Bowl", 2, "Delete"],
   ];
+
+  const tempteacher: [ string ][] = [
+    ["Yare, Jerilyn M."],
+    ["Alilin, Sofia Dara"],
+    ["Pongot, Jophiel"],
+    ["Dela Pena, Prince Kurt Lawrence"]
+  ]
+
+  const tempcourse: [string][] = [
+    ["Chemistry"],
+    ["Physical Chemistry"],
+    ["Microbiology"],
+    ["Analytical Chemistry"],
+    ["Physics 1"],
+  ]
 
   const [borrowers, setBorrowers] = useState<Borrower[]>([{ id: 1, studentId: "" }]);
 
@@ -248,32 +268,40 @@ function BorrowingForm() {
                 <label>Lab Instructor</label>
               </div>
               <div>
-                <OutlinedInput
-                  id="standard-adornment"
-                  className="inputField"
-                  placeholder="Lab Instructor"
-                  required
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <SearchIcon />
-                    </InputAdornment>
-                  }
-                />
+              <div className='drop'>
+                <FormControl variant="outlined" className='selectform'>
+                  <InputLabel id="demo-simple-select-outlined-label" shrink={false}>Lab Instructor</InputLabel>
+                  <Select
+                    labelId="simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                  
+                  >
+                    {tempteacher.map((teacher, index) => (
+                      <MenuItem className='try' key={index} value={teacher[0]}>
+                        {teacher[0]}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              
               </div>
-              <div>
+              <div className='labelContain'>
                 <label>Subject</label>
               </div>
-              <div>
-                <OutlinedInput
-                  className="inputField"
-                  placeholder="Subject"
-                  required
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <SearchIcon />
-                    </InputAdornment>
-                  }
-                />
+              <div className='drop'>
+                <FormControl variant="outlined" className='selectform'>
+                  <InputLabel id="demo-simple-select-outlined-label" shrink={false}>Subject</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                  >
+                    {tempcourse.map((course, index) => (
+                      <MenuItem key={index} value={course[0]}>
+                        {course[0]}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </div>
               <div className="thirdFormContainer">
                 <div>
@@ -406,6 +434,7 @@ function BorrowingForm() {
                   </button>
                 </div>
               </div>
+            </div>
             </div>
             <div className='btnsContainer1'>
               <div>
