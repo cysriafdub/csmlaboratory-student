@@ -14,6 +14,7 @@ import BreakageCompletedView from './components/transactionView/breakageComplete
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ForgotPassword from './components/forgotPassword/ForgotPassword';
 import Footer from './components/footer/footer';
+import RegistrationForm from './components/registration/Registration';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Routes>
           
           <Route path="/" element={<Login/>} />
+          <Route path="/registration" element={<RegistrationForm />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path="/borrow-form" element={<BorrowingForm />} />
           <Route path='/request-confirm' element={<RequestConfirm />} />
