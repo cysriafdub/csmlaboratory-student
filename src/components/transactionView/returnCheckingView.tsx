@@ -1,5 +1,3 @@
-
-
 import header from '../../assets/headerlogo.png'
 
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -76,7 +74,7 @@ function ReturnCheckingView() {
                 <div className='viewContent'>
                   
                    <div className="headerView">
-                   <Link to ="/return" className='customArrowLink'>
+                   <Link to ="/returning" className='customArrowLink'>
                         <KeyboardBackspaceIcon className='viewArrowIcon'/>
                     </Link>
                        <img src={header} alt="Header Logo" className="mainlogoView" />
