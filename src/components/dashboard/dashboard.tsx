@@ -10,6 +10,9 @@ import CircleIcon from '@mui/icons-material/Circle';
 import TransactionItem from './tapViewTransaction';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import FlashOffIcon from '@mui/icons-material/FlashOff';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 
 function DashboardScreen() {
@@ -206,7 +209,7 @@ return (
                 onClick={() => handleStatusClick('completed')}
             >
                 <div className="iconStatus">
-                <ThumbUpOutlinedIcon />
+                <CheckCircleIcon />
                 </div>
                 <div className="buttonName">Returned</div>
             </Link>
@@ -217,7 +220,7 @@ return (
                 onClick={() => handleStatusClick('breakage')}
             >
                 <div className="iconStatus">
-                <BrokenImageOutlinedIcon />
+                <FlashOffIcon />
                 </div>
                 <div className="buttonName">Breakage</div>
             </Link>
@@ -228,7 +231,7 @@ return (
                 onClick={() => handleStatusClick('rejected')}
             >
                 <div className="iconStatus">
-                <BrokenImageOutlinedIcon />
+                <ThumbDownIcon />
                 </div>
                 <div className="buttonName">Rejected</div>
             </Link>
