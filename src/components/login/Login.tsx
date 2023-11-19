@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, FormEvent } from 'react';
 import LoginLogo from '../../assets/LoginLogo.png';
 import PersonIcon from '@mui/icons-material/Person';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -14,7 +14,7 @@ function Login() {
     const [idNumber, setIdNumber] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
-    const history = useNavigate()
+    const history = useNavigate();
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -22,40 +22,42 @@ function Login() {
         event.preventDefault();
     };
 
-    const handleLogin = () => {
+    const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
         if (idNumber === 'yourValidIDNumber' && password === 'yourValidPassword') {
             // Successful login, no error message
             setError('');
-            history("/dashboard");
+            history('/dashboard');
         } else {
             // Invalid login, set the error message if both fields are not empty
             if (idNumber && password) {
                 setError('Invalid ID Number or Password');
             } else {
-                setError('');
+                setError('Please enter ID Number and Password.');
             }
         }
     };
 
     return (
-        <div className='loginContainer'>
-            <div className='logoContainer mainlogo'>
-                <img className='logo' src={LoginLogo} alt="Login Logo" />
+        <div className="loginContainer">
+            <div className="logoContainer mainlogo">
+                <img className="logo" src={LoginLogo} alt="Login Logo" />
             </div>
             <div>
-                <form>
-                    <div className='form-container'>
+                <form onSubmit={handleLogin}>
+                    <div className="form-container">
                         <TextField
                             id="input-with-icon-textfield"
-                            placeholder='ID Number'
+                            placeholder="ID Number"
                             sx={{
                                 width: 300,
                                 marginBottom: 3,
-                                borderColor: 'black'
+                                borderColor: 'black',
                             }}
                             InputProps={{
                                 endAdornment: (
-                                    <InputAdornment position='end'>
+                                    <InputAdornment position="end">
                                         <PersonIcon />
                                     </InputAdornment>
                                 ),
@@ -65,11 +67,11 @@ function Login() {
                             onChange={(e) => setIdNumber(e.target.value)}
                         />
                     </div>
-                    <div className='form-container'>
+                    <div className="form-container">
                         <Input
                             id="standard-adornment-password"
                             type={showPassword ? 'text' : 'password'}
-                            placeholder='Password'
+                            placeholder="Password"
                             sx={{
                                 width: 300,
                             }}
@@ -89,16 +91,16 @@ function Login() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
-                    {error && <div className='error-message'>{error}</div>}
-                    <div className='form-container loginbtncontainer'>
-                        <button className='loginButton' type="button" onClick={handleLogin}>
+                    {error && <div className="error-message">{error}</div>}
+                    <div className="form-container loginbtncontainer">
+                        <button className="loginButton" type="submit">
                             Login
                         </button>
                     </div>
                 </form>
-                <div className='fpContainer'>
+                <div className="fpContainer">
                     <Link to="/forgot-password">
-                        <a className='forgotpass' href='/'>
+                        <a className="forgotpass" href="/">
                             Forgot Password?
                         </a>
                     </Link>
