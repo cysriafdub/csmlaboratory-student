@@ -1050,6 +1050,8 @@ D-3C */
   background-color: rgb(255, 255, 255);
   padding: 10px 10px;
   margin: 10px 25px;
+
+  border-radius: 12px;
 }
 .titleID{
   color: #000;
@@ -1099,6 +1101,9 @@ D-3C */
   font-style: normal;
   font-weight: 400;
 }
+
+
+
 .viewTitleLabel{
   color: #1E1A4D;
 
@@ -1108,7 +1113,9 @@ D-3C */
   margin-top: 5px;
   margin-bottom: 15px;
 }
-.viewItemsSelected, .viewMembersInfo{
+
+
+.viewItemsSelected{
   border-top: 1px solid #A2A2A2;
   border-bottom: 1px solid #A2A2A2;
   display: flex;
@@ -1118,6 +1125,32 @@ D-3C */
  
   
 }
+
+.firstRow {
+  display: flex;
+  width: 307px;
+  padding: 5px 0px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.viewAfterLabel{
+  border-top: 1px solid #A2A2A2;
+  display: flex;
+  padding: 10px 5px 0px 5px;
+  flex-direction: column;
+
+
+}
+
+
+.approvedCont {
+  padding: 20px 0px 35px 0px;
+}
+
+
+
 .eachIndex{
   margin-right: 15px;
 }
@@ -1125,7 +1158,17 @@ D-3C */
   display: flex;
   flex-direction: row;
 }
-.viewEachInfo, .viewItemLeft{
+
+.viewEachInfo{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  margin-bottom: 15px;
+  color: hsla(0, 0%, 0%, 0.7)
+
+}
+.viewItemLeft{
   margin-top: 0px;
   display: flex;
   flex-direction: row;
