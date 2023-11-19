@@ -26,10 +26,14 @@ function App() {
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path="/borrow-form" element={<BorrowingForm />} />
           <Route path='/request-confirm' element={<RequestConfirm />} />
+
           <Route path="/dashboard" element={<DashboardScreen />} />
+
           <Route path="/pending" element={<DashboardScreen />} />
           <Route path="/on-borrow" element={<DashboardScreen/>} />
-          <Route path="/return" element={<DashboardScreen/>} />
+          <Route path="/returning" element={<DashboardScreen/>} />
+          <Route path="/returned" element={<DashboardScreen/>} />
+          <Route path="/completed" element={<DashboardScreen/>} />
           <Route path="/breakage" element={<DashboardScreen/>} />
 
           <Route path="/pending/view/:id" element={<PendingView/>} />

@@ -686,7 +686,7 @@ D-3C */
   flex-direction: column;
   margin-bottom: 8px;
 }
-.transFirstRow{
+.transactionFirstRow{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -702,7 +702,7 @@ D-3C */
   
   
 }
-.currentStatus{
+.transactionStatusContainer{
 
 
   display: flex;
@@ -714,10 +714,9 @@ D-3C */
 
 }
 
-.iconCurrentStatus{
+.iconReturning, .iconPending{
   
-  color: #E1A304;
- 
+  color: #E1A304; 
   display: flex;
   align-items: center;
   height: 5px;
@@ -725,40 +724,54 @@ D-3C */
   margin-right: 15px;
   
 }
-.iconCurrentStatus svg{
+
+.iconApproved, .iconCompleted, .iconResolved{
+  color: #00360C;
+
+  display: flex;
+  align-items: center;
+  height: 5px;
+  width: 5px;
+  margin-right: 15px;
+  
+}
+.iconBreakage, .iconRejected{
+  
+  color: #360000;
+  display: flex;
+  align-items: center;
+  height: 5px;
+  width: 5px;
+  margin-right: 15px;
+  
+}
+.iconReturning svg, .iconPending svg, .iconApproved svg, .iconCompleted svg, .iconResolved svg, .iconBreakage svg, .iconRejected svg {
   width: 100%;
   height: 100%;
   margin-right: 10px;
   
 }
-.penStatus, .retStatusChecking{
+.itemPendingStatusText, .itemReturningStatusText{
   color: #E1A304;
   font-size: 11px;
   font-style: normal;
   font-weight: 600;
 }
-.obStatus{
-  color: #17561D;
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 600;
-  
 
-}
-.retStatusCompleted, .breakStatusCompleted{
+.itemCompletedStatusText, .itemResolvedStatusText, .itemApprovedStatusText{
   color: hsla(126, 58%, 21%, 1);
   font-size: 11px;
   font-style: normal;
   font-weight: 600;
 }
-.breakStatus{
-  color: #360000;
+.itemBreakageStatusTex{
+  color: #cd3d3d;
   font-size: 11px;
   font-style: normal;
   font-weight: 600;
 }
 
-.transSecondRow{
+.transactionSecondRow{
   color: #8F8F8F;
   font-size: 11px;
   font-style: italic;
@@ -852,6 +865,18 @@ D-3C */
 .viewArrowIcon{
   height: 4px;
   width: 4px;
+}
+.transaction-header-note{
+  color: #360000;
+
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  justify-content: flex-end;
+  margin: 3px 25px 0px 25px;
+
 }
 
 /*PV-2*/
@@ -1036,6 +1061,12 @@ D-3C */
 .titleID span{
   font-size: 21px;
 }
+.firstRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .viewStudentInfo{
   display: flex;
   flex-direction: row;
@@ -1075,7 +1106,7 @@ D-3C */
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
-  margin-top: 5px;
+  margin-top: 15px;
   margin-bottom: 15px;
 }
 .viewItemsSelected, .viewMembersInfo{
@@ -1109,7 +1140,10 @@ D-3C */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
- 
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+ align-items: center;
 }
 .totalQuantityLabel{
   display: flex;
@@ -1259,14 +1293,13 @@ D-3C */
  align-items: center;
   font-weight: 700;
   font-size: 14px;
-
   color: hsla(0, 100%, 11%, 1);
  
  
   
 }
 .breakageLabel{
-  margin-left: 70px;
+  margin-left: 30px;
   background: #FFE9E9;   
   border-radius: 10px;
   padding: 3px 6px;

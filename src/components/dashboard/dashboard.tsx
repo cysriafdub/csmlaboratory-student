@@ -7,72 +7,78 @@ import HourglassBottomTwoToneIcon from '@mui/icons-material/HourglassBottomTwoTo
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import BrokenImageOutlinedIcon from '@mui/icons-material/BrokenImageOutlined';
 import CircleIcon from '@mui/icons-material/Circle';
-
+import TransactionItem from './tapViewTransaction';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
 function DashboardScreen() {
-    const [selectedItem, setSelectedItem] = useState('pending');
-    const handleButtonClick = (item: string) => {
-        setSelectedItem(item);
-      };
+    const [selectedStatus, setselectedStatus] = useState('pending');
+  
 
-      const pendingItems = [
+    const handleStatusClick = (status: string) => {
+        setselectedStatus(status);
+    };
+  
+
+    const allItems = [
         {
           id: 1034,
           date: 'August 19, 2023',
           time: '9:00am',
-          status: 'Pending'
-        }
-        
-       
-      ]
-      const onBorrowItems = [
-        {
-          id: 1034,
-          date: 'August 19, 2023',
-          time: '9:00am',
-          status: 'Borrowing'
-        }
-        
-       
-      ]
-      const returnItems = [
-        {
-          id: 1034,
-          date: 'August 19, 2023',
-          time: '9:00am',
-          status: 'Completed'
+          status: 'Approved'
         },
         {
             id: 1034,
             date: 'August 19, 2023',
             time: '9:00am',
-            status: 'Checking'
-          }
-        
-       
-      ]
-      const breakageItems = [
-        {
-          id: 1034,
-          date: 'August 19, 2023',
-          time: '9:00am',
-          status: 'Completed'
+            status: 'Resolved'
         },
         {
             id: 1034,
             date: 'August 19, 2023',
             time: '9:00am',
             status: 'Breakage'
-          }
-        
-       
-      ]
+          },
+        {
+          id: 1234,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Pending'
+        },
+        {
+          id: 1035,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Completed'
+        },
+        {
+          id: 1035,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Returning'
+        },
+        {
+          id: 1035,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Rejected'
+        },
+        {
+          id: 1235,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Approved'
+        },
+        {
+          id: 1036,
+          date: 'August 19, 2023',
+          time: '9:00am',
+          status: 'Rejected'
+        },
+      ];
     
-    
-    
+      const filteredItems = allItems.filter(item => item.status.toLowerCase() === selectedStatus);
     
 
 return (
@@ -117,8 +123,8 @@ return (
 
         <div className="buttonsView">
             <Link to='/pending'
-                className={`buttonItemsStatus ${selectedItem === 'pending' ? 'button-active' : ''}`}
-                onClick={() => handleButtonClick('pending')}
+                className={`buttonItemsStatus ${selectedStatus === 'pending' ? 'button-active' : ''}`}
+                onClick={() => handleStatusClick('pending')}
                 
             
             >
@@ -129,9 +135,9 @@ return (
             </Link>
 
             <Link to ='/on-borrow'
-                className={`buttonItemsStatus ${selectedItem === 'on-borrow' ? 'button-active' : ''}`}
+                className={`buttonItemsStatus ${selectedStatus === 'approved' ? 'button-active' : ''}`}
                 
-                onClick={() => handleButtonClick('on-borrow')}
+                onClick={() => handleStatusClick('approved')}
                 >
                 <div className="iconStatus">
                 <BackHandOutlinedIcon />
@@ -139,33 +145,73 @@ return (
                 <div className="buttonName">On-Borrow</div>
             </Link>
 
-            <Link to='/return'
-                className={`buttonItemsStatus ${selectedItem === 'return' ? 'button-active' : ''}`}
+            <Link to ='/returning'
+                className={`buttonItemsStatus ${selectedStatus === 'returning' ? 'button-active' : ''}`}
                 
-                onClick={() => handleButtonClick('return')}
+                onClick={() => handleStatusClick('returning')}
+                >
+                <div className="iconStatus">
+                <BackHandOutlinedIcon />
+                </div>
+                <div className="buttonName">Pending Return </div>
+            </Link>
+
+
+            <Link to='/returned'
+                className={`buttonItemsStatus ${selectedStatus === 'completed' ? 'button-active' : ''}`}
+                
+                onClick={() => handleStatusClick('completed')}
             >
                 <div className="iconStatus">
                 <ThumbUpOutlinedIcon />
                 </div>
-                <div className="buttonName">Return</div>
+                <div className="buttonName">Returned</div>
             </Link>
 
             <Link to ='/breakage'
-                className={`buttonItemsStatus ${selectedItem === 'breakage' ? 'button-active' : ''}`}
+                className={`buttonItemsStatus ${selectedStatus === 'breakage' ? 'button-active' : ''}`}
                 
-                onClick={() => handleButtonClick('breakage')}
+                onClick={() => handleStatusClick('breakage')}
             >
                 <div className="iconStatus">
                 <BrokenImageOutlinedIcon />
                 </div>
                 <div className="buttonName">Breakage</div>
             </Link>
+            
+            <Link to ='/rejected'
+                className={`buttonItemsStatus ${selectedStatus === 'rejected' ? 'button-active' : ''}`}
+                
+                onClick={() => handleStatusClick('rejected')}
+            >
+                <div className="iconStatus">
+                <BrokenImageOutlinedIcon />
+                </div>
+                <div className="buttonName">Rejected</div>
+            </Link>
             </div>
+     
 
 
-        {/* transaction containers */}
+         
+        {filteredItems.map((item) => {
+          console.log("Selected Status in Borrowing component:", selectedStatus);
+          return (
+            <TransactionItem
+              key={item.id}
+              item={item}
+              linkTo={`/${selectedStatus}/view/${item.id}`}
+              statusIcon={`icon${selectedStatus.charAt(0).toUpperCase() + selectedStatus.slice(1)}`}
+              statusText={`item${selectedStatus.charAt(0).toUpperCase() + selectedStatus.slice(1)}StatusText`}
+             
+
+            />
+          );
+        })}
+
+        {/* transaction containers
         <div className="transactionView">
-        {selectedItem === 'pending' && (
+        {selectedStatus === 'pending' && (
             pendingItems.map((item) => (
                 <Link to ={`/pending/view/${item.id}`} className="transactionContainer">
                 <div className="transFirstRow">
@@ -197,7 +243,7 @@ return (
 
         
 
-        {selectedItem === 'on-borrow' && (
+        {selectedStatus === 'approved' && (
             onBorrowItems.map((item) => (
             <Link to ={`/on-borrow/view/${item.id}`} className="transactionContainer">
                 <div className="transFirstRow">
@@ -238,10 +284,10 @@ return (
             )}
         
         {
-        selectedItem === 'return' && (
+        selectedStatus === 'returning' || 'completed' && (
             returnItems.map((item) => (
             <Link
-                to={item.status === 'Completed' ? `/return/view/completed/${item.id}` : `/return/view/checking/${item.id}`}
+                to={item.status === 'Returned' ? `/return/view/completed/${item.id}` : `/return/view/checking/${item.id}`}
                 className="transactionContainer"
                 key={item.id}
             >
@@ -253,7 +299,7 @@ return (
                     <div className="iconCurrentStatus">
                     <CircleIcon
                         className={
-                        item.status === 'Completed'
+                        item.status === 'Returned'
                             ? 'retStatusCompleted'
                             : 'retStatusChecking'
                         }
@@ -261,7 +307,7 @@ return (
                     </div>
                     <div
                     className={
-                        item.status === 'Completed'
+                        item.status === 'Returned'
                         ? 'retStatusCompleted'
                         : 'retStatusChecking'
                     }
@@ -287,11 +333,11 @@ return (
         }
 
             
-        {selectedItem === 'breakage' && (
+        {selectedStatus === 'breakage' && (
             breakageItems.map((item)=>(
                 <Link
-                to={item.status === 'Completed' ? `/breakage/view/completed/${item.id}` : `/breakage/view/${item.id}`}
-                className="transactionContainerBreakage"
+                to={item.status === 'Resolved' ? `/breakage/view/completed/${item.id}` : `/breakage/view/${item.id}`}
+                className="transactionContainer"
                 key={item.id}
             >
                 <div className="transFirstRow">
@@ -303,7 +349,7 @@ return (
                          
                             <CircleIcon
                                 className={
-                                item.status === 'Completed'
+                                item.status === 'Resolved'
                                     ? 'breakStatusCompleted'
                                     : 'breakStatus'
                                 }
@@ -312,7 +358,7 @@ return (
                            </div>
                            <div
                             className={
-                                item.status === 'Completed'
+                                item.status === 'Resolved'
                                 ? 'breakStatusCompleted'
                                 : 'breakStatus'
                             }
@@ -341,7 +387,7 @@ return (
             )}
 
             
-        </div>
+        </div> */}
         
 
     </div>

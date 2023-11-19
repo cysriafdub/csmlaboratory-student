@@ -84,6 +84,9 @@ return (
                     Status:<span>{item.status} </span>
 
                 </div>
+                <div className="transaction-header-note">
+                    Note: Replace items mark as Broken/Missing
+                </div>
 
 
     
@@ -106,9 +109,28 @@ return (
                             </div>
                     </div>
                     ))}
+                      <div className='viewTitleLabel'>Members </div>
+                            
+                            <div className='viewMembersInfo'>
+                            {membersDetails.map((member, index)=>(     
+                                <div className='viewEachInfo' key={index}>
+                                    <div className='eachIndex'>
+                                    {index+1}
+                                    </div>
+                                    <div className='eachmemID'>
+                                
+                                {member.idNumber}
+                                    </div>
+                                    <div className='eachmemNAME'>
+                                {member.Name}
+                                        
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+    
 
-
-                    <div className='viewTitleLabel'> Selected Items </div>
+                    <div className='viewTitleLabel'> Broken Items </div>
                      <div className='viewItemsSelected'>
                         {item.items.map((selectedItems,index)=>(
 
@@ -121,8 +143,7 @@ return (
                                         </div>
                                         <div className='eachItemDetails'>
                                             {selectedItems.name}
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;
-                                        {selectedItems.quantity}
+                                          
                                         </div>
                                     </div>
 
@@ -131,15 +152,11 @@ return (
                                         <div className="breakageContainer">
                                         <div className='breakageDetails'>
                                             <div className='breakageLabel'> Broken/Missing </div>
-                                            <div className='iconBreakageView'>
-                                            <CircleIcon/>
-                                            {selectedItems.breakage}
-                                            </div>
+                                              
+                                      
                                             
                                         </div>
-                                        <div className="breakageItemNote">
-                                        Note: Replace items mark as Broken/Missing
-                                        </div>
+                                      
                                         </div>
                                         )}
                                     </div>   
@@ -155,26 +172,7 @@ return (
                         10
                     </div>
 
-                    <div className='viewTitleLabel'>Members </div>
-                            
-                        <div className='viewMembersInfo'>
-                        {membersDetails.map((member, index)=>(     
-                            <div className='viewEachInfo' key={index}>
-                                <div className='eachIndex'>
-                                {index+1}
-                                </div>
-                                <div className='eachmemID'>
-                            
-                            {member.idNumber}
-                                </div>
-                                <div className='eachmemNAME'>
-                            {member.Name}
-                                    
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
+                  
                     <div className='viewDateTime'>
                         <div className='viewDate'>
                         {item.date}
@@ -189,38 +187,10 @@ return (
             </div>
             ))}
 
-                <div className="viewConfirmation">
-                    <div className="firstRowConfirm">
-                    <div className={`checkIconButton ${isChecked ? 'checked' : ''}`} onClick={handleCheckClick}>
-                            {isChecked ? (
-                                <CheckCircleOutlineIcon className='customeCircle' sx={{ stroke: 'white', strokeWidth: 1 }} />
-                            ) : (
-                                <CircleOutlinedIcon className='customeCircle' sx={{ stroke: 'white', strokeWidth: 1 }} />
-                            )}
-                    </div>
-                        <div className="confirmationTxt">
-                        I certify that the above item(s) will be <span>replaced</span>.<br/>
-                         Make sure the replacement item(s) are ready to submit before clicking comply.
-                        </div>
+        <Link to ="/breakage" className="doneViewButton">
+            Done View
+        </Link>
 
-                    </div>
-
-                    <div>
-
-                        {isChecked ? (
-                            <Link to="/pending">
-                            <div className="returnViewButton active">
-                                Comply
-                            </div>
-                            </Link>
-                        ) : (
-                            <div className="returnViewButton">
-                            Comply
-                            </div>
-                        )}
-                        </div>
-                    
-                </div>
 
     </div>
     );
