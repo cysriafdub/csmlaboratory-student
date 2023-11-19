@@ -183,7 +183,7 @@ return (
                 onClick={() => handleStatusClick('approved')}
                 >
                 <div className="iconStatus">
-                <BackHandOutlinedIcon />
+                <ThumbUpOutlinedIcon />
                 </div>
                 <div className="buttonName">On-Borrow</div>
             </Link>
