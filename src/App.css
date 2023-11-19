@@ -624,14 +624,20 @@ D-3C */
 /* D-4C */
 
 .buttonsView{
+
+  padding: 5px 0px;
   margin-left: 20px;
   margin-right: 20px;
   display: flex;
   flex-direction: row;
   margin-top: 25px;
   margin-bottom: 25px;
+
+  overflow-x: scroll;
   
 }
+
+
 .buttonItemsStatus{
   background-color:hsla(112, 45%, 77%, 0.306);
   margin-right: 10px;
@@ -644,12 +650,14 @@ D-3C */
   font-size: 11px;
   align-items: center;          
   border-radius: 10px;
-  color: hsla(119, 50%, 20%, 1)
+  color: hsla(119, 50%, 20%, 1);
+  min-width: 68px;
 }
 
 @media screen and (max-width: 360px){
   .buttonItemsStatus{
     font-size: 9px;
+    align-items: center;
   }
   }
 
@@ -1041,7 +1049,7 @@ D-3C */
   margin: 20px 25px 0px 25px;
   background: #D9FFD8;
 }
-.viewStatusBreakage{
+.viewStatusBreakage, .viewStatusRed{
   display: flex;
   padding: 5px;
   justify-content: flex-end;

@@ -14,6 +14,7 @@ import BreakageCompletedView from './components/transactionView/breakageComplete
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ForgotPassword from './components/forgotPassword/ForgotPassword';
 import Footer from './components/footer/footer';
+import RejectedView from './components/transactionView/rejectedView';
 
 function App() {
   return (
@@ -40,10 +41,13 @@ function App() {
 
           <Route path="/pending/view/:id" element={<PendingView/>} />
           <Route path="/on-borrow/view/:id" element={<OnBorrowView/>} />
-          <Route path="/return/view/checking/:id" element={<ReturnCheckingView/>} />
-          <Route path="/return/view/completed/:id" element={<ReturnCompletedView/>} />
           <Route path="/breakage/view/:id" element={<BreakageView/>} />
           <Route path="/resolved/view/:id" element={<BreakageCompletedView/>} />
+
+          <Route path="/approved/view/:id" element={<OnBorrowView/>} />
+          <Route path="/returning/view/:id" element={<ReturnCheckingView/>} />
+          <Route path="/completed/view/:id" element={<ReturnCompletedView/>} />
+          <Route path="/rejected/view/:id" element={<RejectedView/>} />
 
 
 

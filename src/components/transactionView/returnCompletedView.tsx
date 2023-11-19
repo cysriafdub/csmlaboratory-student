@@ -73,7 +73,7 @@ function ReturnCompletedView() {
                 <div className='viewContent'>
                   
                    <div className="headerView">
-                   <Link to ="/return" className='customArrowLink'>
+                   <Link to ="/returned" className='customArrowLink'>
                         <KeyboardBackspaceIcon className='viewArrowIcon'/>
                     </Link>
                        <img src={header} alt="Header Logo" className="mainlogoView" />
