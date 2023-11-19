@@ -42,6 +42,14 @@ input::-ms-reveal {
   margin-top: 30px;
 }
 
+.error-message{
+  margin-top: 10px;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .fpContainer{
   margin-top: 10px;
 }
@@ -86,7 +94,13 @@ input::-ms-reveal {
 
 /* End Login Page Styles */
 
+
+
 /* Forgot Password Styles */
+
+.backtoLoginBtn{
+  color: #C8ECB8;
+}
 
 /* Borrow Form Styles */
 
@@ -141,6 +155,22 @@ label{
   background-color: white;
   margin-left: 20px;
   width: 85%;
+}
+
+.drop{
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.selectform{
+  width: 89%;
+}
+.labelContain{
+  margin-top: 10px;
+}
+
+.whatever{
+  margin-left: 0;
 }
 
 .firstfield{
@@ -1357,3 +1387,11 @@ footer{
   top: 0;
   bottom: 10px;
 } */
+
+.tableHeadContainer{
+  border-bottom: solid 1px black;
+}
+
+.totalContain{
+  margin-right: 10px;
+}
