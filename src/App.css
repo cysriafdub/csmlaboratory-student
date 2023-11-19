@@ -599,13 +599,14 @@ D-3C */
   display: flex;
   flex-direction: row;
   margin-top: 25px;
+  margin-bottom: 25px;
   
 }
 .buttonItemsStatus{
   background-color:hsla(112, 45%, 77%, 0.306);
   margin-right: 10px;
   display: flex;
-  width: 78px;
+  width: 84px;
   height: 75px;
   padding: 4px 6px;
   flex-direction: column;
@@ -631,7 +632,7 @@ D-3C */
   border: none;
   margin-right: 10px;
   display: flex;
-  width: 78px;
+  width: 84px;
   height: 75px;
   padding: 4px 6px;
   flex-direction: column;
@@ -663,7 +664,7 @@ D-3C */
 /* D-5C */
 
 .transactionView{
-  margin-top: 25px;
+  margin-top: 15px;
 
 
 }
@@ -673,7 +674,7 @@ D-3C */
   display: flex;
   padding: 10px 10px 0px 10px;
   flex-direction: column;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   text-decoration: none;
 
 }
@@ -758,13 +759,21 @@ D-3C */
   font-weight: 600;
 }
 
-.itemCompletedStatusText, .itemResolvedStatusText, .itemApprovedStatusText{
+.itemCompletedStatusText, .itemResolvedStatusText, .itemApprovedStatusText, .itemResolvedStatusText{
   color: hsla(126, 58%, 21%, 1);
   font-size: 11px;
   font-style: normal;
   font-weight: 600;
 }
-.itemBreakageStatusTex{
+.itemBreakageStatusText{
+ 
+  font-size: 11px;
+  color: #d26767;
+
+  font-style: normal;
+  font-weight: 600;
+}
+.itemRejectedStatusText{
   color: #cd3d3d;
   font-size: 11px;
   font-style: normal;
@@ -812,7 +821,7 @@ D-3C */
   font-style: normal;
   font-weight: 700;
 }
-.transThirdRow {
+.transactionThirdRow {
     margin-top: 5px;
     border-top: 1px solid rgba(160, 160, 160, 0.20);
     padding: 5px 0px;

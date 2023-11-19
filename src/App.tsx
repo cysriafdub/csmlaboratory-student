@@ -35,13 +35,15 @@ function App() {
           <Route path="/returned" element={<DashboardScreen/>} />
           <Route path="/completed" element={<DashboardScreen/>} />
           <Route path="/breakage" element={<DashboardScreen/>} />
+          <Route path="/rejected" element={<DashboardScreen/>} />
+
 
           <Route path="/pending/view/:id" element={<PendingView/>} />
           <Route path="/on-borrow/view/:id" element={<OnBorrowView/>} />
           <Route path="/return/view/checking/:id" element={<ReturnCheckingView/>} />
           <Route path="/return/view/completed/:id" element={<ReturnCompletedView/>} />
           <Route path="/breakage/view/:id" element={<BreakageView/>} />
-          <Route path="/breakage/view/completed/:id" element={<BreakageCompletedView/>} />
+          <Route path="/resolved/view/:id" element={<BreakageCompletedView/>} />
 
 
 

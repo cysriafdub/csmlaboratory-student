@@ -21,9 +21,8 @@ interface TapViewTransactionProps {
 const TapViewTransaction: React.FC<TapViewTransactionProps> = ({ item, linkTo, statusIcon, statusText, }) => (
     <Link to={linkTo}>
       
-     <div className="transactionView">
-        <div className='transactionContainer'>
 
+        <div className='transactionContainer'>
                 <div className='transactionFirstRow'>
                 <div className='transactionID'>Transaction ID #{item.id}</div>
 
@@ -45,7 +44,7 @@ const TapViewTransaction: React.FC<TapViewTransactionProps> = ({ item, linkTo, s
 
                 <div className='transactionThirdRow'>Tap to View</div>
                 </div>
-     </div>
+     
     </Link>
   );
 export default TapViewTransaction;

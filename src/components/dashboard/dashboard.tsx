@@ -78,8 +78,51 @@ function DashboardScreen() {
         },
       ];
     
-      const filteredItems = allItems.filter(item => item.status.toLowerCase() === selectedStatus);
-    
+      const filteredItems = allItems.filter(item => {
+        const lowerCaseStatus = item.status.toLowerCase();
+      
+        switch (selectedStatus) {
+          case 'pending':
+            return lowerCaseStatus === 'pending';
+          case 'approved':
+            return lowerCaseStatus === 'approved';
+          case 'breakage':
+            return lowerCaseStatus === 'breakage' || lowerCaseStatus === 'resolved';
+          case 'completed':
+            return lowerCaseStatus === 'completed';
+          case 'returning':
+            return lowerCaseStatus === 'returning';
+          case 'rejected':
+            return lowerCaseStatus === 'rejected';
+          default:
+            
+            return true;
+        }
+      });
+
+      const getStatusClassName = (status: string) => {
+        const lowerCaseStatus = status.toLowerCase();
+      
+        switch (lowerCaseStatus) {
+          case 'pending':
+            return 'Pending';
+          case 'approved':
+            return 'Approved';
+          case 'breakage':
+            return 'Breakage'; // Style for 'Breakage' status
+          case 'resolved':
+            return 'Resolved'; // Style for 'Resolved' status
+          case 'completed':
+            return 'Completed';
+          case 'returning':
+            return 'Returning';
+          case 'rejected':
+            return 'Rejected';
+          default:
+            return ''; // Handle any other cases or set a default class
+        }
+      };
+      
 
 return (
     <div className='DashboardContent'>
@@ -197,199 +240,18 @@ return (
         {filteredItems.map((item) => {
           console.log("Selected Status in Borrowing component:", selectedStatus);
           return (
+            <div className="transactionView">
             <TransactionItem
-              key={item.id}
-              item={item}
-              linkTo={`/${selectedStatus}/view/${item.id}`}
-              statusIcon={`icon${selectedStatus.charAt(0).toUpperCase() + selectedStatus.slice(1)}`}
-              statusText={`item${selectedStatus.charAt(0).toUpperCase() + selectedStatus.slice(1)}StatusText`}
-             
-
-            />
+                    item={item}
+                    linkTo={`/${item.status.toLowerCase()}/view/${item.id}`}
+                    statusIcon={`icon${getStatusClassName(item.status)}`}
+                    statusText={`item${getStatusClassName(item.status)}StatusText`}
+                />
+            </div>
           );
         })}
 
-        {/* transaction containers
-        <div className="transactionView">
-        {selectedStatus === 'pending' && (
-            pendingItems.map((item) => (
-                <Link to ={`/pending/view/${item.id}`} className="transactionContainer">
-                <div className="transFirstRow">
-                    <div className="transactionID">
-                     Transaction ID #{item.id}
-                    </div>
-                    <div className="currentStatus">
-                    <div className="iconCurrentStatus">
-                        <CircleIcon />
-                    </div>
-                    <div className='penStatus'>   {item.status} </div>
-                    </div>
-                </div>
-                <div className="transSecondRow">
-                    <div className="timeanddate">
-                    <div> {item.date}</div>
-                    <div>{item.time}</div>
-                    </div>
-                    <div className="pendingCancel">
-                    Cancel
-                    </div>
-                </div>
-                <div className="transThirdRow">
-                    Tap to View
-                </div>
-                </Link>
-            ))
-            )}
-
         
-
-        {selectedStatus === 'approved' && (
-            onBorrowItems.map((item) => (
-            <Link to ={`/on-borrow/view/${item.id}`} className="transactionContainer">
-                <div className="transFirstRow">
-                    <div className="transactionID">
-                             Transaction ID #{item.id}
-                    </div>
-                    <div className="currentStatus">
-                            <div className="iconCurrentStatus">
-                            <CircleIcon className='obStatus'/>
-                            
-                           </div>
-                           <div className='obStatus'> {item.status} </div>
-
-                    </div>
-
-                </div>
-
-
-                <div className="transSecondRow">
-                        <div className="timeanddate">
-                        <div>{item.date}</div> 
-                        <div>{item.time}</div>
-                        </div>
-
-                        <div className="obReturn">
-                            Return
-                        </div>
-
-                        
-                </div>
-                    
-                <div className="transThirdRow">
-                    Tap to View
-                </div>
-            </Link>
-            
-            ))
-            )}
-        
-        {
-        selectedStatus === 'returning' || 'completed' && (
-            returnItems.map((item) => (
-            <Link
-                to={item.status === 'Returned' ? `/return/view/completed/${item.id}` : `/return/view/checking/${item.id}`}
-                className="transactionContainer"
-                key={item.id}
-            >
-                <div className="transFirstRow">
-                <div className="transactionID">
-                    Transaction ID #{item.id}
-                </div>
-                <div className="currentStatus">
-                    <div className="iconCurrentStatus">
-                    <CircleIcon
-                        className={
-                        item.status === 'Returned'
-                            ? 'retStatusCompleted'
-                            : 'retStatusChecking'
-                        }
-                    />
-                    </div>
-                    <div
-                    className={
-                        item.status === 'Returned'
-                        ? 'retStatusCompleted'
-                        : 'retStatusChecking'
-                    }
-                    >
-                    {item.status}
-                    </div>
-                </div>
-                </div>
-
-                <div className="transSecondRow">
-                <div className="timeanddate">
-                    <div>{item.date}</div>
-                    <div>{item.time}</div>
-                </div>
-                </div>
-
-                <div className="transThirdRow">
-                    Tap to View
-                </div>
-            </Link>
-            ))
-        )
-        }
-
-            
-        {selectedStatus === 'breakage' && (
-            breakageItems.map((item)=>(
-                <Link
-                to={item.status === 'Resolved' ? `/breakage/view/completed/${item.id}` : `/breakage/view/${item.id}`}
-                className="transactionContainer"
-                key={item.id}
-            >
-                <div className="transFirstRow">
-                    <div className="transactionID">
-                    Transaction ID #{item.id}
-                    </div>
-                    <div className="currentStatus">
-                            <div className="iconCurrentStatus">
-                         
-                            <CircleIcon
-                                className={
-                                item.status === 'Resolved'
-                                    ? 'breakStatusCompleted'
-                                    : 'breakStatus'
-                                }
-                            />
-                            
-                           </div>
-                           <div
-                            className={
-                                item.status === 'Resolved'
-                                ? 'breakStatusCompleted'
-                                : 'breakStatus'
-                            }
-                            >
-                            {item.status}
-                            </div>
-
-                    </div>
-
-                </div>
-
-
-                <div className="transSecondRow">
-                        <div className="timeanddate">
-                        <div>{item.date}</div> 
-                        <div>{item.time}</div>
-                        </div>
-                        
-                </div>
-                    
-                <div className="transThirdRow">
-                    Tap to View
-                </div>
-            </Link>
-            ))
-            )}
-
-            
-        </div> */}
-        
-
     </div>
 );
 }
