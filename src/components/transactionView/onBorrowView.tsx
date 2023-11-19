@@ -53,12 +53,23 @@ function OnBorrowView() {
             {
                 idNumber: 201854265,
                 name: 'Sofia Dara Alilin',
-                Dept: 'BSCHEMISTRY'
+                Dept: 'BSCHEMISTRY',
+                section: 'CHEM1H1'
                 
             }   
             ]
-    
-
+        const instructor = [
+            {
+                  idNumber: 2055060541,
+                  Name: 'Ms. Jerilyn Yare',
+                }
+            ]
+              
+        const labtech = [
+            {
+              Name: "Prince Kurt Laurence",
+            }
+        ]
 
      
     
@@ -91,20 +102,57 @@ return (
             
                     <div className="titleID"> Transaction ID  &nbsp; <span> #{item.id}</span></div>
                     {studentDetails.map((student)=>(
-                    <div className='viewStudentInfo'>
-                            <div className='iconProfileContainer'> 
-                            <AccountCircleOutlinedIcon/>
+                        <div className="firstRow">
+                            <div className='viewStudentInfo'>
+                                <div className='iconProfileContainer'> 
+                                    <AccountCircleOutlinedIcon/>
+                                </div>
+                                <div className='student-details'>
+                                    <div className='student-Name'>
+                                        {student.name}
+                                    </div>
+                                    <div className='student-ID-Dept'>
+                                        {student.idNumber}-{student.Dept}
+                                    </div>
+                                </div>
                             </div>
-                            <div className='student-details'>
-                            <div className='student-Name'>
-                                {student.name}
+                            <div className="sectionContainer">
+                                Section: <b>{student.section}</b>
                             </div>
-                            <div className='student-ID-Dept'>
-                                {student.idNumber}-{student.Dept}
-                            </div>
-                            </div>
-                    </div>
+                        </div>
                     ))}
+
+                    <div className='viewTitleLabel'>Members </div>
+                            
+                    <div className='viewAfterLabel'>
+                        {membersDetails.map((member, index)=>(     
+                            <div className='viewEachInfo' key={index}>
+                                <div className='eachIndex'>
+                                    {index+1}
+                                </div>
+                                <div className='eachmemID'>
+                                    {member.idNumber}
+                                </div>
+                                <div className='eachmemNAME'>
+                                    {member.Name}                
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className='viewTitleLabel'> Instructor </div>
+                    <div className='viewAfterLabel'>
+                        <div className="viewEachInfo">
+                            Ms. Jerilyn Yare
+                        </div>
+                    </div>
+
+                    <div className='viewTitleLabel'> Subject </div>
+                    <div className='viewAfterLabel'>
+                        <div className="viewEachInfo">
+                            Chemistry 
+                        </div>
+                    </div>
 
 
                     <div className='viewTitleLabel'> Selected Items </div>
@@ -119,8 +167,6 @@ return (
                                     </div>
                                     <div className='eachItemDetails'>
                                         {selectedItems.name}
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;
-                                    {selectedItems.quantity}
                                     </div>
                                 </div>      
                             ))}   
@@ -132,24 +178,27 @@ return (
                         10
                     </div>
 
-                    <div className='viewTitleLabel'>Members </div>
-                            
-                        <div className='viewMembersInfo'>
-                        {membersDetails.map((member, index)=>(     
-                            <div className='viewEachInfo' key={index}>
-                                <div className='eachIndex'>
-                                {index+1}
+                    {/* Approved by View */}
+                    <div className="approvedCont">
+                        <div className='viewTitleLabel'>Approved by: </div>
+                        <div className='viewAfterLabel'>
+                            {instructor.map((instructor, index)=>(       
+                                <div className='viewEachInfo'>
+                                <ul className='eachmemNAME'>
+                                    <li>Instructor: <b>{instructor.Name}</b></li>       
+                                </ul>
                                 </div>
-                                <div className='eachmemID'>
-                            
-                            {member.idNumber}
-                                </div>
-                                <div className='eachmemNAME'>
-                            {member.Name}
-                                    
-                                </div>
+                            ))}
+                            {labtech.map((labtech, index)=>(       
+                            <div className='viewEachInfo'>
+                                <ul className='eachmemNAME'>
+                                <li>Lab Technician: 
+                                    {/* <b>{labtech.Name} </b> */}
+                                </li>  
+                                </ul>
                             </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
 
                     <div className='viewDateTime'>
