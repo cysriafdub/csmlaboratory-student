@@ -1387,3 +1387,11 @@ footer{
   top: 0;
   bottom: 10px;
 } */
+
+.tableHeadContainer{
+  border-bottom: solid 1px black;
+}
+
+.totalContain{
+  margin-right: 10px;
+}

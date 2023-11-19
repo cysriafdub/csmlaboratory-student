@@ -1,5 +1,4 @@
 import React, { useState, ChangeEvent, MouseEvent, useRef, useEffect, FormEvent } from 'react';
-import QuantityModal from './QuantityModal';
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import HeaderLogo from "../../assets/headerlogo.png";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -13,6 +12,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { style } from '@mui/system';
 
 
 interface Borrower {
@@ -23,16 +23,16 @@ interface Borrower {
 interface TableItem {
   id: string | number;
   name: string;
-  quantity: number;
+  action: string;
 }
 
 function BorrowingForm() {
-  const tempdatahead: string[] = ["Item No.", "Description", "Qty", "Action"];
-  const tempdata: [string, string, number, string][] = [
-    ["001", "Beaker", 10, "Delete"],
-    ["002", "Test Tube", 9, "Delete"],
-    ["003", "Glass", 4, "Delete"],
-    ["004", "Bowl", 2, "Delete"],
+  const tempdatahead: string[] = ["Item No.", "Description", "Action"];
+  const tempdata: [string, string, string][] = [
+    ["001", "Beaker", "Delete"],
+    ["002", "Test Tube", "Delete"],
+    ["003", "Glass", "Delete"],
+    ["004", "Bowl", "Delete"],
   ];
 
   const tempteacher: [ string ][] = [
@@ -48,6 +48,11 @@ function BorrowingForm() {
     ["Microbiology"],
     ["Analytical Chemistry"],
     ["Physics 1"],
+  ]
+  const tempsection: [string][] = [
+    ["CHEM-1H1"],
+    ["CHEM-1H2"],
+    ["ENVISCI-1N1"],
   ]
 
   const [borrowers, setBorrowers] = useState<Borrower[]>([{ id: 1, studentId: "" }]);
@@ -69,7 +74,7 @@ function BorrowingForm() {
   };
 
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [searchResults, setSearchResults] = useState<[string, string, number, string][]>([]);
+  const [searchResults, setSearchResults] = useState<[string, string, string][]>([]);
   const [selectedItem, setSelectedItem] = useState<[string, string, number, string] | null>(null);
   const [quantity, setQuantity] = useState<number>(0);
   const [tableData, setTableData] = useState<TableItem[]>([]);
@@ -101,63 +106,25 @@ function BorrowingForm() {
     }
   };
 
-  const handleSelectItem = (item: [string, string, number, string]) => {
-    setSelectedItem(item);
-    setQuantity(item[2]); // Set the initial quantity to the selected item's quantity
-    setIsModalOpen(true);
-    
-  };
-
-  const handleAddToTable = (quantity: number) => {
-    if (selectedItem) {
-      const newItem: TableItem = {
-        id: selectedItem[0],
-        name: selectedItem[1],
-        quantity: quantity,
-      };
-
-      const existingIndex = tableData.findIndex(item => item.id === newItem.id);
-      if (existingIndex !== -1) {
-        const updatedTableData = [...tableData];
-        updatedTableData[existingIndex] = newItem; // Update the item in the table
-        setTableData(updatedTableData);
-      } else {
-        setTableData([...tableData, newItem]);
-      }
-
-      setIsModalOpen(false);
+  const handleSelectItem = (item: [string, string, string]) => {
+    const newItem: TableItem = {
+      id: item[0],
+      name: item[1],
+      action: item[2], // Set the action according to your requirements
+    };
+  
+    const existingIndex = tableData.findIndex((tableItem) => tableItem.id === newItem.id);
+  
+    if (existingIndex !== -1) {
+      const updatedTableData = [...tableData];
+      updatedTableData[existingIndex] = newItem;
+      setTableData(updatedTableData);
+    } else {
+      setTableData([...tableData, newItem]);
     }
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
-  const handleIncrement = (index: number, e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent form submission
-    setTableData((prevTableData) => {
-      const updatedTableData = [...prevTableData];
-      updatedTableData[index] = {
-        ...updatedTableData[index],
-        quantity: updatedTableData[index].quantity + 1
-      };
-      return updatedTableData;
-    });
-  };
-  
-  const handleDecrement = (index: number, e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent form submission
-    setTableData((prevTableData) => {
-      const updatedTableData = [...prevTableData];
-      if (updatedTableData[index].quantity > 0) {
-        updatedTableData[index] = {
-          ...updatedTableData[index],
-          quantity: updatedTableData[index].quantity - 1
-        };
-      }
-      return updatedTableData;
-    });
-  };
 
   const handleRemoveItem = (index: number) => {
     setTableData((prevTableData) => {
@@ -167,7 +134,6 @@ function BorrowingForm() {
     });
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
 
   const [isFormValid, setIsFormValid] = useState(false);
@@ -209,7 +175,15 @@ function BorrowingForm() {
       alert('Please fill out all required fields.');
     }
   };
-  
+
+
+  // for select
+
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined);
+
+  const handleSelectChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setSelectedValue(event.target.value as string);
+  };
 
   // ... (rest of your component)
 
@@ -264,37 +238,69 @@ function BorrowingForm() {
               </div>
             </div>
             <div className="secondFormContainer">
+              <div className='labelContain'>
+                  <label>Section</label>
+                </div>
+                <div className='drop'>
+                  <FormControl variant="outlined" className='selectform'>
+
+                    <Select
+                      labelId="demo-simple-select-outlined-label"
+                      id="demo-simple-select-outlined"
+                      displayEmpty
+                      inputProps={{ 'aria-label': 'Without label' }}
+                      className='customSelect'
+            
+                    >
+                      <MenuItem value={undefined} disabled  className="specialMenuItem">
+                        Section
+                      </MenuItem>
+                      {tempsection.map((section, index) => (
+                        <MenuItem className='whatever2' key={index} value={section[0]}>
+                          {section[0]}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
               <div>
                 <label>Lab Instructor</label>
               </div>
               <div>
               <div className='drop'>
                 <FormControl variant="outlined" className='selectform'>
-                  <InputLabel id="demo-simple-select-outlined-label" shrink={false}>Lab Instructor</InputLabel>
                   <Select
-                    labelId="simple-select-outlined-label"
+                    labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
-                  
+                    displayEmpty
+                    inputProps={{ 'aria-label': 'Without label' }}
                   >
+                    <MenuItem value={undefined} disabled>
+                      Lab Instructor
+                    </MenuItem>
                     {tempteacher.map((teacher, index) => (
-                      <MenuItem className='try' key={index} value={teacher[0]}>
+                      <MenuItem key={index} value={teacher[0]}>
                         {teacher[0]}
                       </MenuItem>
                     ))}
                   </Select>
                 </FormControl>
-              
               </div>
+
               <div className='labelContain'>
                 <label>Subject</label>
               </div>
               <div className='drop'>
                 <FormControl variant="outlined" className='selectform'>
-                  <InputLabel id="demo-simple-select-outlined-label" shrink={false}>Subject</InputLabel>
                   <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
+                    displayEmpty
+                    inputProps={{ 'aria-label': 'Without label' }}
                   >
+                    <MenuItem  value={undefined} disabled  style={{ color: 'gray' }} >
+                      Subject
+                    </MenuItem>
                     {tempcourse.map((course, index) => (
                       <MenuItem key={index} value={course[0]}>
                         {course[0]}
@@ -340,43 +346,22 @@ function BorrowingForm() {
                   
                   <div className="tableContainer1">
                     <table className="table">
-                      <thead>
-                        <tr>
-                          <th>Item No.</th>
-                          <th>Description</th>
-                          <th>Qty</th>
-                          <th>Action</th>
-                        </tr>
-                        
-                      </thead>
-                      <div className='yawa'></div>
+                      
+                        <thead>
+                          <tr>
+                            <th>Item No.</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                     
+                      
+
                       <tbody className='bodytable'>
                         {tableData.map((item, index) => (
                           <tr key={index}>
                             <td>{item.id}</td>
                             <td>{item.name}</td>
-                            <td className='editQty'>
-                              <button className='btndecrement' onClick={(e) => handleDecrement(index, e)}>-</button>
-                              <input
-                                className='quantityInput'
-                                value={item.quantity}
-                                onChange={(e) => {
-                                  const newValue = parseInt(e.target.value, 10);
-                                  if (!isNaN(newValue)) {
-                                    // Set the new quantity directly
-                                    setTableData((prevTableData) => {
-                                      const updatedTableData = [...prevTableData];
-                                      updatedTableData[index] = {
-                                        ...updatedTableData[index],
-                                        quantity: newValue
-                                      };
-                                      return updatedTableData;
-                                    });
-                                  }
-                                }}
-                              />
-                              <button className='btnincrement' onClick={(e) => handleIncrement(index, e)}>+</button>
-                            </td>
                             <td>
                               <button className='removeBtnLink' onClick={() => handleRemoveItem(index)}>Remove</button>
                             </td>
@@ -387,7 +372,7 @@ function BorrowingForm() {
                     {formSubmitted && tableData.length === 0 && (
                       <p className="errorMessage">Please select at least one item in the table.</p>
                     )}
-                    <p className='totalItem'><b>Total Selected:</b></p>
+                    <p className='totalItem'><span className='totalContain'><b>Total Selected:</b></span>{tableData.length}</p>
                   </div>
                 </div>
               </div>
@@ -453,16 +438,10 @@ function BorrowingForm() {
 
       </div>
 
-      <div style={{ height: '100%' }}></div>
-      {isModalOpen && (
-        <QuantityModal
-          selectedItem={selectedItem}
-          onClose={closeModal}
-          onAddToTable={handleAddToTable}
-        />
-      )}
+
     </div>
   );
 }
+
 
 export default BorrowingForm;
