@@ -18,6 +18,7 @@ function DashboardScreen() {
   const [selectedStatus, setselectedStatus] = useState("pending");
 
   const handleStatusClick = (status: string) => {
+    console.log("Clicked status:", status);
     setselectedStatus(status);
   };
 
@@ -78,49 +79,16 @@ function DashboardScreen() {
     },
   ];
 
-  const filteredItems = allItems.filter((item) => {
-    const lowerCaseStatus = item.status.toLowerCase();
-
-    switch (selectedStatus) {
-      case "pending":
-        return lowerCaseStatus === "pending";
-      case "approved":
-        return lowerCaseStatus === "approved";
-      case "breakage":
-        return lowerCaseStatus === "breakage" || lowerCaseStatus === "resolved";
-      case "completed":
-        return lowerCaseStatus === "completed";
-      case "returning":
-        return lowerCaseStatus === "returning";
-      case "rejected":
-        return lowerCaseStatus === "rejected";
-      default:
-        return true;
+  const filteredItems = allItems.filter(item => {
+    if (selectedStatus === "Breakage") {
+      return item.status === "Breakage" || item.status === "Resolved"; 
+      // for generating/changing classname in transactionItem, line(215)
+    } else {
+      return item.status === selectedStatus;
     }
   });
-
-  const getStatusClassName = (status: string) => {
-    const lowerCaseStatus = status.toLowerCase();
-
-    switch (lowerCaseStatus) {
-      case "pending":
-        return "Pending";
-      case "approved":
-        return "Approved";
-      case "breakage":
-        return "Breakage"; // Style for 'Breakage' status
-      case "resolved":
-        return "Resolved"; // Style for 'Resolved' status
-      case "completed":
-        return "Completed";
-      case "returning":
-        return "Returning";
-      case "rejected":
-        return "Rejected";
-      default:
-        return ""; // Handle any other cases or set a default class
-    }
-  };
+  
+  
 
   return (
     <div className="DashboardContent">
@@ -158,9 +126,9 @@ function DashboardScreen() {
         <Link
           to="/pending"
           className={`buttonItemsStatus ${
-            selectedStatus === "pending" ? "button-active" : ""
+            selectedStatus === "Pending" ? "button-active" : ""
           }`}
-          onClick={() => handleStatusClick("pending")}
+          onClick={() => handleStatusClick("Pending")}
         >
           <div className="iconStatus">
             <HourglassBottomTwoToneIcon />
@@ -171,9 +139,9 @@ function DashboardScreen() {
         <Link
           to="/on-borrow"
           className={`buttonItemsStatus ${
-            selectedStatus === "approved" ? "button-active" : ""
+            selectedStatus === "Approved" ? "button-active" : ""
           }`}
-          onClick={() => handleStatusClick("approved")}
+          onClick={() => handleStatusClick("Approved")}
         >
           <div className="iconStatus">
             <ThumbUpOutlinedIcon />
@@ -184,10 +152,10 @@ function DashboardScreen() {
         <Link
           to="/returning"
           className={`buttonItemsStatus ${
-            selectedStatus === "returning" ? "button-active" : ""
+            selectedStatus === "Returning" ? "button-active" : ""
           }`}
-          onClick={() => handleStatusClick("returning")}
-        >
+          onClick={() => handleStatusClick("Returning")}
+        > 
           <div className="iconStatus">
             <BackHandOutlinedIcon />
           </div>
@@ -197,9 +165,9 @@ function DashboardScreen() {
         <Link
           to="/returned"
           className={`buttonItemsStatus ${
-            selectedStatus === "completed" ? "button-active" : ""
+            selectedStatus === "Completed" ? "button-active" : ""
           }`}
-          onClick={() => handleStatusClick("completed")}
+          onClick={() => handleStatusClick("Completed")}
         >
           <div className="iconStatus">
             <CheckCircleIcon />
@@ -210,9 +178,9 @@ function DashboardScreen() {
         <Link
           to="/breakage"
           className={`buttonItemsStatus ${
-            selectedStatus === "breakage" ? "button-active" : ""
+            selectedStatus === "Breakage" ? "button-active" : ""
           }`}
-          onClick={() => handleStatusClick("breakage")}
+          onClick={() => handleStatusClick("Breakage")}
         >
           <div className="iconStatus">
             <FlashOffIcon />
@@ -223,9 +191,9 @@ function DashboardScreen() {
         <Link
           to="/rejected"
           className={`buttonItemsStatus ${
-            selectedStatus === "rejected" ? "button-active" : ""
+            selectedStatus === "Rejected" ? "button-active" : ""
           }`}
-          onClick={() => handleStatusClick("rejected")}
+          onClick={() => handleStatusClick("Rejected")}
         >
           <div className="iconStatus">
             <ThumbDownIcon />
@@ -234,15 +202,18 @@ function DashboardScreen() {
         </Link>
       </div>
 
+     
+    
+    {/* transaction mini items for each button  */}
       {filteredItems.map((item) => {
         console.log("Selected Status in Borrowing component:", selectedStatus);
         return (
           <div className="transactionView">
             <TransactionItem
               item={item}
-              linkTo={`/${item.status.toLowerCase()}/view/${item.id}`}
-              statusIcon={`icon${getStatusClassName(item.status)}`}
-              statusText={`item${getStatusClassName(item.status)}StatusText`}
+              linkTo={`/${item.status}/view/${item.id}`}
+              statusIcon={`icon${item.status.charAt(0).toUpperCase() + item.status.slice(1)}`}
+              statusText={`item${item.status.charAt(0).toUpperCase() + item.status.slice(1)}StatusText`}
             />
           </div>
         );

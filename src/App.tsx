@@ -39,15 +39,15 @@ function App() {
           <Route path="/rejected" element={<DashboardScreen/>} />
 
 
-          <Route path="/pending/view/:id" element={<PendingView/>} />
-          <Route path="/on-borrow/view/:id" element={<OnBorrowView/>} />
-          <Route path="/breakage/view/:id" element={<BreakageView/>} />
-          <Route path="/resolved/view/:id" element={<BreakageCompletedView/>} />
+          <Route path="/Pending/view/:id" element={<PendingView/>} />
+          <Route path="/On-borrow/view/:id" element={<OnBorrowView/>} />
+          <Route path="/Breakage/view/:id" element={<BreakageView/>} />
+          <Route path="/Resolved/view/:id" element={<BreakageCompletedView/>} />
 
-          <Route path="/approved/view/:id" element={<OnBorrowView/>} />
-          <Route path="/returning/view/:id" element={<ReturnCheckingView/>} />
-          <Route path="/completed/view/:id" element={<ReturnCompletedView/>} />
-          <Route path="/rejected/view/:id" element={<RejectedView/>} />
+          <Route path="/Approved/view/:id" element={<OnBorrowView/>} />
+          <Route path="/Returning/view/:id" element={<ReturnCheckingView/>} />
+          <Route path="/Completed/view/:id" element={<ReturnCompletedView/>} />
+          <Route path="/Rejected/view/:id" element={<RejectedView/>} />
 
 
 
